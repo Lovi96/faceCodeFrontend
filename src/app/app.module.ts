@@ -1,18 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpModule} from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { RegPageComponent } from './reg-page/reg-page.component';
+import {AppComponent} from './app.component';
+import {RegPageComponent} from './reg-page/reg-page.component';
+import {TestComponent} from './test/test.component';
+
+import {TestService} from './services/test.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegPageComponent
+    RegPageComponent,
+    TestComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
