@@ -4,21 +4,22 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {RegPageComponent} from './reg-page/reg-page.component';
-import {TestComponent} from './test/test.component';
 
-import {TestService} from './services/test.service';
+import {FormsModule} from '@angular/forms';
+import {UserService} from './services/user.service'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegPageComponent,
-    TestComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
-  providers: [TestService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
