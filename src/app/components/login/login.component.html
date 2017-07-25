@@ -1,3 +1,12 @@
-<p>
-  login works!
-</p>
+<div style="max-width: 300px; min-width: 175px" align="center">
+  <h1>Log in</h1>
+
+  <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
+
+  <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
+  <input id="password" type="password" [(ngModel)]="password" placeholder="Password*">
+  <br>
+  <button type="button" (click)="logIn()">Log in</button>
+
+</div>
+

@@ -11,16 +11,16 @@ export class RegPageComponent {
 
   user: User;
 
-  email: String = "place@holder.com";
-  password: String = "jelszo";
-  pwAgain: String = "jelszo";
+  email: string = "place@holder.com";
+  password: string = "jelszo";
+  pwAgain: string = "jelszo";
   yearOfBirth: number = 1997;
-  gender: String = "FEMALE";
-  firstName: String = "Virág";
-  lastName: String = "Kiss";
-  address: String = "Aranyközép út 69.";
-  city: String = "Smallville";
-  phone: String = "telefoááám";
+  gender: string = "FEMALE";
+  firstName: string = "Virág";
+  lastName: string = "Kiss";
+  address: string = "Aranyközép út 69.";
+  city: string = "Smallville";
+  phone: string = "telefoááám";
 
   exceptionMessage: string;
 
@@ -34,10 +34,9 @@ export class RegPageComponent {
     this.exceptionMessage = null;
     this.user = new User(this.email, this.password, this.yearOfBirth, this.gender,
       this.firstName, this.lastName, this.address, this.city, this.phone);
-
+    alert(this.user);
     this.userService.registerUser(this.user).subscribe(x => {
 
-      console.log(x);
       if (x.exception) {
         if (x.exception.statusCode) {
           this.exceptionMessage = x.exception.statusCode.toString();
