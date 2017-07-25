@@ -1,3 +1,12 @@
-<p>
-  login works!
-</p>
+<div style="max-width: 300px; min-width: 175px" align="center">
+  <h1>Login</h1>
+
+  <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
+  <input id="pw" type="password" [(ngModel)]="password" placeholder="Password*">
+
+  <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
+
+  <button type="button" (click)="logIn()">Login!</button>
+
+</div>
+
