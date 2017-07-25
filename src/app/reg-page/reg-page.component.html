@@ -2,6 +2,7 @@
   <h1>Register</h1>
 
   <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
+  <div *ngIf="this.success">Successfully registration! :))))))))</div>
 
   <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
   <input id="pw" type="password" [(ngModel)]="password" placeholder="Password*">
@@ -27,6 +28,5 @@
 
   <button type="button" (click)="send()">Create Account</button>
 
-  <div *ngIf="this.success">Successfully registration! :))))))))</div>
 </div>
 

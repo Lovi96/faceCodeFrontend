@@ -7,7 +7,7 @@ import {User} from '../classes/User';
   templateUrl: './reg-page.component.html',
   styleUrls: ['./reg-page.component.css']
 })
-export class RegPageComponent{
+export class RegPageComponent {
 
   user: User;
 
@@ -20,7 +20,7 @@ export class RegPageComponent{
   lastName: String = "Kiss";
   address: String = "Aranyközép út 69.";
   city: String = "Smallville";
-  phone: String = "06 20 - ha bekapod, megfúsz";
+  phone: String = "telefoááám";
 
   exceptionMessage: string;
 
@@ -30,6 +30,8 @@ export class RegPageComponent{
   }
 
   send(): void {
+    this.success = false;
+    this.exceptionMessage = null;
     this.user = new User(this.email, this.password, this.yearOfBirth, this.gender,
       this.firstName, this.lastName, this.address, this.city, this.phone);
 
@@ -45,7 +47,7 @@ export class RegPageComponent{
           this.exceptionMessage = stackTraceOjbect.fileName + " " + stackTraceOjbect.lineNumber;
         }
       }
-      if(x.payload){
+      if (x.payload) {
         this.success = true;
       }
     });
