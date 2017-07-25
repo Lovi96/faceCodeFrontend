@@ -6,7 +6,7 @@ import {RegPageComponent} from './components/reg-page/reg-page.component';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './services/user.service'
 import {AppRoutingModule} from './app-routing.module';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './components/login/login.component';
 
 
 @NgModule({
