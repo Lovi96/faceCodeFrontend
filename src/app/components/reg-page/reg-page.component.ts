@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {UserService} from '../services/user.service';
-import {User} from '../classes/User';
+import {UserService} from '../../services/user.service';
+import {User} from '../../classes/User';
 
 @Component({
   selector: 'app-reg-page',
