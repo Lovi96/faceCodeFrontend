@@ -33,6 +33,8 @@ export class LoginComponent {
         }
       }
       if (x.payload) {
+        let user = x.payload;
+        console.log(user);
         //kiseült, irányítás a newsfeedre
         this.exceptionMessage = 'bent vagy a matrixban';
       }

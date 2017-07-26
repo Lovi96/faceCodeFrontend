@@ -26,10 +26,14 @@ export class UserService {
       .map((response: Response) => response.json());
   }
 
-  logIn(loginCredentials: LoginCredentials): Observable<Result> {
+  logIn(loginCredentials: LoginCredentials): Observable<any> {
 
     return this.http.post(this.loginURL, loginCredentials, this.options)
-      .map((response: Response) => response.json());
+      .map((response: Response) => response.json())
+  }
+
+  getStrangers() {
+
   }
 
 }
