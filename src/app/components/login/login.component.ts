@@ -10,11 +10,6 @@ import {OnInit} from "@angular/core"
 })
 export class LoginComponent implements OnInit {
 
-  ngOnInit(): void {
-  console.log("fasz");
-    localStorage.setItem("szar", "szarocska");
-  }
-
   email = "place@holder.com";
   password = "jelszo";
 
@@ -25,9 +20,11 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService) {
   }
 
-
+  ngOnInit(): void {
+  }
 
   logIn() {
+
     this.loginCredentail = new LoginCredentials(this.email, this.password);
     this.userService.logIn(this.loginCredentail).subscribe(x => {
       console.log(x);
@@ -41,9 +38,9 @@ export class LoginComponent implements OnInit {
         }
       }
       if (x.payload) {
-        let user = x.payload;
-        console.log(user);
-        //kiseült, irányítás a newsfeedre
+        let token = x.payload;
+        console.log(token);
+        localStorage.setItem('token', token);
         this.exceptionMessage = 'bent vagy a matrixban';
       }
     })

@@ -9,6 +9,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {LoginComponent} from './components/login/login.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {RelationshipService} from './services/relationship-service.service';
+import {HttpWrapper} from "./services/http-wrapper.service";
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {RelationshipService} from './services/relationship-service.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, RelationshipService],
+  providers: [UserService, RelationshipService, HttpWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule {
