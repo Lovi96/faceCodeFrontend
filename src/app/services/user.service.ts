@@ -15,7 +15,10 @@ export class UserService {
   loginURL = 'http://localhost:8080/facecode/account/login';
 
   headers = new Headers({'Content-Type': 'application/json'});
-  options = new RequestOptions({headers: this.headers});
+
+  options = new RequestOptions({headers: this.headers, withCredentials: true});
+
+
 
   constructor(private http: Http) {
   }

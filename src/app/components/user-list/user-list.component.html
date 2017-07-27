@@ -1,0 +1,25 @@
+<div style="max-width: 300px; min-width: 175px" align="center">
+  <h1>User search</h1>
+
+  <input id="firstName" name="firstName" type="text" [(ngModel)]="firstName" placeholder="First name">
+  <input id="lastName" name="lastName" type="text" [(ngModel)]="lastName" placeholder="Last name">
+  <input id="age" name="age" type="number" [(ngModel)]="age" placeholder="Age">
+  <br>
+
+  <select name="gender" [(ngModel)]="gender">
+    <option value="">Any</option>
+    <option value="MALE">Male</option>
+    <option value="FEMALE">Female</option>
+  </select>
+
+  <br>
+  <button type="button" (click)="get()">Search</button>
+
+  <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
+
+  <div *ngFor="let user of users">
+    <p>{{user.firstName}}</p>
+  </div>
+
+</div>
+
