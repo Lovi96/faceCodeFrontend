@@ -34,7 +34,6 @@ export class RegPageComponent {
     this.exceptionMessage = null;
     this.user = new User(this.email, this.password, this.yearOfBirth, this.gender,
       this.firstName, this.lastName, this.address, this.city, this.phone);
-    alert(this.user);
     this.userService.registerUser(this.user).subscribe(x => {
 
       if (x.exception) {

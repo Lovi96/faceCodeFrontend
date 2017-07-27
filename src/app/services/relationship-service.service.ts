@@ -11,7 +11,7 @@ export class RelationshipService {
 
   // headers = new Headers({'Content-Type': 'application/json'});
   headers = new Headers({'Cookies': document.cookie});
-  options = new RequestOptions({withCredentials: true});
+  options = new RequestOptions({headers: this.headers, withCredentials: true});
 
   friendsURL = 'http://localhost:8080/facecode/relationship/friendlist';
   userSearch = 'http://localhost:8080/facecode/relationship/usersearch?';
