@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
   }
 
   get() {
-    this.relationshipService.filteredUserSearch(this.firstName, this.lastName, this.gender, this.age)
+    this.relationshipService.filteredUserSearch(this.firstName, this.lastName, this.gender, this.age, this.relation)
       .subscribe(x => this.users = x);
   }
 

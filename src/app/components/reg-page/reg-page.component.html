@@ -1,7 +1,7 @@
 <div style="max-width: 300px; min-width: 175px" align="center">
   <h1>Register</h1>
 
-  <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
+  <div *ngIf="this.exceptionMessage">{{exceptionMessage}}</div>
   <div *ngIf="this.success">Successfully registration! :))))))))</div>
 
   <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
@@ -18,15 +18,15 @@
   <input id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="First Name">
   <input id="lastName" name="firstName" [(ngModel)]="lastName" placeholder="Last Name">
 
-  <input id="address" name="address" [(ngModel)]="address" placeholder="Address" >
+  <input id="address" name="address" [(ngModel)]="address" placeholder="Address">
   <input id="city" name="city" [(ngModel)]="city" placeholder="City">
 
   <input id="phone" name="phone" [(ngModel)]="phone" placeholder="Phone Number">
 
-
   <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
 
-  <button type="button" (click)="send()">Create Account</button>
+  <button type="submit" (click)="send()">Create Account</button>
+
 
 </div>
 

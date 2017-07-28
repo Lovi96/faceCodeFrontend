@@ -35,14 +35,17 @@ export class RegPageComponent {
     this.user = new User(this.email, this.password, this.yearOfBirth, this.gender,
       this.firstName, this.lastName, this.address, this.city, this.phone);
     this.userService.registerUser(this.user).subscribe(x => {
+      console.log(x);
+
 
       if (x.exception) {
+        const stackTraceOjbect = x.exception.stackTrace[0];
+        this.exceptionMessage = stackTraceOjbect.fileName + " " + stackTraceOjbect.lineNumber;
         if (x.exception.statusCode) {
           this.exceptionMessage = x.exception.statusCode.toString();
         }
-        else {
-          let stackTraceOjbect = x.exception.stackTrace[0];
-          this.exceptionMessage = stackTraceOjbect.fileName + " " + stackTraceOjbect.lineNumber;
+        if (x.exception.localizedMessage) {
+          this.exceptionMessage = x.exception.localizedMessage.toString();
         }
       }
       if (x.payload) {

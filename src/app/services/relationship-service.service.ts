@@ -16,12 +16,13 @@ export class RelationshipService {
   constructor(private http: HttpWrapper) {
   }
 
-  filteredUserSearch(firstName: string, lastName: string, gender: string, age: number): Observable<User[]> {
+  filteredUserSearch(firstName: string, lastName: string, gender: string, age: number, relation: number): Observable<User[]> {
     let params = new URLSearchParams();
     params.set("firstName", firstName);
     params.set("lastName", lastName);
     params.set("gender", gender);
     params.set("age", age.toString());
+    params.set("relation", relation.toString());
 
     let URLWithQuery = this.userSearch + params.toString();
     console.log(URLWithQuery);
