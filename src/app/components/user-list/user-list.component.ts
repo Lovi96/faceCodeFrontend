@@ -11,11 +11,11 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
-  relation: string ="";
   firstName: string = "";
   lastName: string = "";
   age: number = 0;
   gender: string = "";
+  relation: number = 1;
 
   exceptionMessage: string;
 

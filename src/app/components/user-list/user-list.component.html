@@ -6,8 +6,18 @@
   <input id="age" name="age" type="number" [(ngModel)]="age" placeholder="Age">
   <br>
 
+
+  <select name="relation" [(ngModel)]="relation">
+    <option value="0">Friends</option>
+    <option value="1">Friends and strangers</option>
+    <option value="2">Strangers</option>
+    <option value="3">Blocked</option>
+  </select>
+
+  <br>
+
   <select name="gender" [(ngModel)]="gender">
-    <option value="">Any</option>
+    <option value="">Any Gender</option>
     <option value="MALE">Male</option>
     <option value="FEMALE">Female</option>
   </select>
@@ -18,7 +28,7 @@
   <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
 
   <div *ngFor="let user of users">
-    <p>{{user.firstName}}</p>
+    <p>{{user.firstName}} {{user.lastName}}  birth year: {{user.birthDate}}  city: {{user.city}}</p>
   </div>
 
 </div>
