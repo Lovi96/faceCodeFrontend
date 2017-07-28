@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {UserService} from '../../services/user.service'
 import {LoginCredentials} from '../../classes/login-cred'
-import {OnInit} from "@angular/core"
+import {OnInit} from '@angular/core'
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,8 @@ import {OnInit} from "@angular/core"
 })
 export class LoginComponent implements OnInit {
 
-  email = "place@holder.com";
-  password = "jelszo";
+  email = 'place@holder.com';
+  password = 'jelszo';
 
   loginCredentail: LoginCredentials;
 
@@ -31,14 +31,13 @@ export class LoginComponent implements OnInit {
       if (x.exception) {
         if (x.exception.statusCode) {
           this.exceptionMessage = x.exception.statusCode.toString();
-        }
-        else {
-          let stackTraceOjbect = x.exception.stackTrace[0];
-          this.exceptionMessage = stackTraceOjbect.fileName + " " + stackTraceOjbect.lineNumber;
+        } else {
+          const stackTraceOjbect = x.exception.stackTrace[0];
+          this.exceptionMessage = stackTraceOjbect.fileName + ' ' + stackTraceOjbect.lineNumber;
         }
       }
       if (x.payload) {
-        let token = x.payload;
+        const token = x.payload;
         console.log(token);
         localStorage.setItem('token', token);
         this.exceptionMessage = 'bent vagy a matrixban';

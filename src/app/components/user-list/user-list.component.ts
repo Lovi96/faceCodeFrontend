@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RelationshipService} from '../../services/relationship-service.service';
-import {User} from "../../classes/User";
+import {User} from '../../classes/User';
 
 @Component({
   selector: 'app-user-list',
@@ -11,11 +11,11 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
-  firstName: string = "";
-  lastName: string = "";
-  age: number = 0;
-  gender: string = "";
-  relation: number = 1;
+  firstName = '';
+  lastName = '';
+  age = 0;
+  gender = '';
+  relation = 1;
 
   exceptionMessage: string;
 
