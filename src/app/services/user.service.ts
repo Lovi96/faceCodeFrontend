@@ -1,27 +1,38 @@
 import {Injectable} from '@angular/core';
 import {User} from '../classes/User';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {Result} from '../classes/Result';
+import {LoginCredentials} from '../classes/login-cred';
+import {HttpWrapper} from './http-wrapper.service';
 
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class UserService {
 
-  registerEndpoint = 'http://localhost:8080/facecode/account/register';
+  registerURL = environment.baseUrl + '/account/register';
+  loginURL = environment.baseUrl + '/account/login';
 
-  headers = new Headers({'Content-Type': 'application/json'});
-  options = new RequestOptions({headers: this.headers});
-
-  constructor(private http: Http) {
+  constructor(private http: HttpWrapper) {
   }
 
   registerUser(user: User): Observable<Result> {
 
-    return this.http.post(this.registerEndpoint, user, this.options)
+    return this.http.post(this.registerURL, user)
       .map((response: Response) => response.json());
+  }
+
+  logIn(loginCredentials: LoginCredentials): Observable<any> {
+
+    return this.http.post(this.loginURL, loginCredentials)
+      .map((response: Response) => response.json())
+  }
+
+  getStrangers() {
+
   }
 
 }

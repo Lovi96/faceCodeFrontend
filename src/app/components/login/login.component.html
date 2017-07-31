@@ -1,12 +1,14 @@
-<div style="max-width: 300px; min-width: 175px" align="center">
-  <h1>Login</h1>
+<div style="max-width: 400px; min-width: 175px" align="center">
+  <div style="max-width: 300px; min-width: 175px" align="center">
+    <h1>Log in</h1>
 
-  <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
-  <input id="pw" type="password" [(ngModel)]="password" placeholder="Password*">
+    <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
 
-  <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
+    <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
+    <input id="password" type="password" [(ngModel)]="password" placeholder="Password*">
+    <br>
+    <button type="button" (click)="logIn()">Log in</button>
 
-  <button type="button" (click)="logIn()">Login!</button>
+  </div>
 
 </div>
-

@@ -1,32 +1,35 @@
-<div style="max-width: 300px; min-width: 175px" align="center">
-  <h1>Register</h1>
+<div align="center">
 
-  <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
-  <div *ngIf="this.success">Successfully registration! :))))))))</div>
+  <div style="max-width: 300px; min-width: 175px" align="center">
+    <h1>Register</h1>
 
-  <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
-  <input id="pw" type="password" [(ngModel)]="password" placeholder="Password*">
-  <input id="pwagain" type="password" [(ngModel)]="pwAgain" placeholder="Password again*">
+    <div *ngIf="this.exceptionMessage">{{exceptionMessage}}</div>
+    <div *ngIf="this.success">Successfully registration! :))))))))</div>
 
-  <input id="yearofbirth" name="firstName" type="number" [(ngModel)]="yearOfBirth" placeholder="Year of birth*">
+    <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
+    <input id="pw" type="password" [(ngModel)]="password" placeholder="Password*">
+    <input id="pwagain" type="password" [(ngModel)]="pwAgain" placeholder="Password again*">
 
-  <p>Sex*</p>
-  <label><input type="radio" name="gender" value="MALE" [(ngModel)]="gender">Male</label>
-  <label>Female<input type="radio" name="gender" value="FEMALE" [(ngModel)]="gender"></label>
-  <br><br>
+    <input id="yearofbirth" name="firstName" type="number" [(ngModel)]="yearOfBirth" placeholder="Year of birth*">
 
-  <input id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="First Name">
-  <input id="lastName" name="firstName" [(ngModel)]="lastName" placeholder="Last Name">
+    <p>Sex*</p>
+    <label><input type="radio" name="gender" value="MALE" [(ngModel)]="gender">Male</label>
+    <label>Female<input type="radio" name="gender" value="FEMALE" [(ngModel)]="gender"></label>
+    <br><br>
 
-  <input id="address" name="address" [(ngModel)]="address" placeholder="Address" >
-  <input id="city" name="city" [(ngModel)]="city" placeholder="City">
+    <input id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="First Name">
+    <input id="lastName" name="lastName" [(ngModel)]="lastName" placeholder="Last Name">
 
-  <input id="phone" name="phone" [(ngModel)]="phone" placeholder="Phone Number">
+    <input id="address" name="address" [(ngModel)]="address" placeholder="Address">
+    <input id="city" name="city" [(ngModel)]="city" placeholder="City">
+
+    <input id="phone" name="phone" [(ngModel)]="phone" placeholder="Phone Number">
+
+    <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
+
+    <button type="submit" (click)="send()">Create Account</button>
 
 
-  <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
-
-  <button type="button" (click)="send()">Create Account</button>
-
+  </div>
 </div>
 

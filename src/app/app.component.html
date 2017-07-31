@@ -1,12 +1,15 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <nav>
-    <a routerLink="/reg" routerLinkActive="active">Registration</a>
-    <a routerLink="/login" routerLinkActive="active">Log in</a>
-  </nav>
-  <router-outlet></router-outlet>
+<div align="center">
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{title}}!!
+    </h1>
+    <nav>
+      <a routerLink="/reg" routerLinkActive="active">Registration</a>
+      <a routerLink="/login" routerLinkActive="active">Log in</a>
+      <a routerLink="/friends" routerLinkActive="active">Friends</a>
+    </nav>
+    <div align="center">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-
-

@@ -1,16 +1,16 @@
 export class User {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
   birthDate: number;
-  gender: String;
-  firstName: String;
-  lastName: String;
-  address: String;
-  city: String;
-  phone: String;
+  gender: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  phone: string;
 
-  constructor(email: String, password: String, yearOfBirth: number, gender: String, firstName: String,
-              lastName: String, address: String, city: String, phone: String) {
+  constructor(email: string, password: string, yearOfBirth: number, gender: string, firstName: string,
+              lastName: string, address: string, city: string, phone: string) {
     this.email = email;
     this.password = password;
     this.birthDate = yearOfBirth;
@@ -21,4 +21,9 @@ export class User {
     this.city = city;
     this.phone = phone;
   }
+
+  // toString(): String{
+  //   return this.email;
+  // }
+
 }
