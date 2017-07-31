@@ -15,6 +15,7 @@ export class UserService {
 
   registerURL = environment.baseUrl + '/account/register';
   loginURL = environment.baseUrl + '/account/login';
+  singleUser = environment.baseUrl + '/account/getuser/';
 
   constructor(private http: HttpWrapper) {
   }
@@ -29,6 +30,10 @@ export class UserService {
 
     return this.http.post(this.loginURL, loginCredentials)
       .map((response: Response) => response.json())
+  }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get(this.singleUser + id).map((response: Response) => response.json().payload);
   }
 
   getStrangers() {

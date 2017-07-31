@@ -10,6 +10,7 @@ import {LoginComponent} from './components/login/login.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {RelationshipService} from './services/relationship-service.service';
 import {HttpWrapper} from "./services/http-wrapper.service";
+import { CompactUserVievComponent } from './components/compact-user-viev/compact-user-viev.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {HttpWrapper} from "./services/http-wrapper.service";
     RegPageComponent,
     LoginComponent,
     UserListComponent,
+    CompactUserVievComponent,
   ],
   imports: [
     BrowserModule,

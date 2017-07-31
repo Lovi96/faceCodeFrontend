@@ -8,9 +8,10 @@ export class User {
   address: string;
   city: string;
   phone: string;
+  id: number;
 
   constructor(email: string, password: string, yearOfBirth: number, gender: string, firstName: string,
-              lastName: string, address: string, city: string, phone: string) {
+              lastName: string, address: string, city: string, phone: string, id?: number) {
     this.email = email;
     this.password = password;
     this.birthDate = yearOfBirth;
@@ -20,6 +21,7 @@ export class User {
     this.address = address;
     this.city = city;
     this.phone = phone;
+    this.id = id;
   }
 
   // toString(): String{
