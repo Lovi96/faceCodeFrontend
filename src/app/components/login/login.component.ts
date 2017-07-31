@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         const token = x.payload;
         console.log(token);
         localStorage.setItem('token', token);
-        this.exceptionMessage = 'bent vagy a matrixban';
+        this.exceptionMessage = 'Logged in successfully';
       }
     })
   }
