@@ -31,7 +31,7 @@
   <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
 
   <div *ngFor="let user of users">
-    <p>{{user.firstName}} {{user.lastName}} birth year: {{user.birthDate}} city: {{user.city}}</p>
+    <app-compact-user-viev [user]="user"></app-compact-user-viev>
   </div>
 
 </div>

@@ -10,7 +10,8 @@ import {LoginComponent} from './components/login/login.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {RelationshipService} from './services/relationship-service.service';
 import {HttpWrapper} from "./services/http-wrapper.service";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CompactUserVievComponent } from './components/compact-user-viev/compact-user-viev.component';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +19,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     RegPageComponent,
     LoginComponent,
     UserListComponent,
+    CompactUserVievComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    AppRoutingModule,
-    NgbModule
+    AppRoutingModule
   ],
   providers: [UserService, RelationshipService, HttpWrapper],
   bootstrap: [AppComponent]

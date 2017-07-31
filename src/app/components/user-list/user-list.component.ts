@@ -28,7 +28,10 @@ export class UserListComponent implements OnInit {
 
   get() {
     this.relationshipService.filteredUserSearch(this.firstName, this.lastName, this.gender, this.age, this.relation)
-      .subscribe(x => this.users = x);
+      .subscribe(x => {
+        console.log(x);
+        this.users = x
+      });
   }
 
 }
