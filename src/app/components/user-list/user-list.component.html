@@ -29,7 +29,7 @@
   <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
 
   <div *ngFor="let user of users">
-    <app-compact-user-viev [id]="user.id"></app-compact-user-viev>
+    <app-compact-user-viev [user]="user"></app-compact-user-viev>
   </div>
 
 </div>

@@ -9,7 +9,7 @@ import {UserService} from '../../services/user.service';
 })
 export class CompactUserVievComponent implements OnInit {
 
-  user: User;
+  @Input() user: User;
   @Input() id: number;
 
   constructor(private userService: UserService) {
@@ -17,10 +17,11 @@ export class CompactUserVievComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUser(this.id).subscribe(result => {
-      console.log("miagyászvan");
-      console.log(result);
-      this.user = result;
-    });
+    if (this.user == null) {
+
+      this.userService.getUser(this.id).subscribe(user => {
+        this.user = user;
+      });
+    }
   }
 }
