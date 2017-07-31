@@ -10,7 +10,7 @@ import {LoginComponent} from './components/login/login.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {RelationshipService} from './services/relationship-service.service';
 import {HttpWrapper} from "./services/http-wrapper.service";
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import {HttpWrapper} from "./services/http-wrapper.service";
     BrowserModule,
     HttpModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [UserService, RelationshipService, HttpWrapper],
   bootstrap: [AppComponent]

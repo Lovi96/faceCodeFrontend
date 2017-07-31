@@ -1,6 +1,6 @@
 <div style="max-width: 400px; min-width: 175px" align="center">
   <h1>User search</h1>
-
+<div>
   <div style="max-width: 300px; min-width: 175px" align="center">
     <input id="firstName" name="firstName" type="text" [(ngModel)]="firstName" placeholder="First name">
     <input id="lastName" name="lastName" type="text" [(ngModel)]="lastName" placeholder="Last name">
@@ -23,7 +23,9 @@
     </select>
 
     <br>
-    <button type="button" (click)="get()">Search</button>
+    <button type="button" class="btn btn-primary" (click)="get()">
+     Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </button>
   </div>
 
   <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
@@ -33,4 +35,4 @@
   </div>
 
 </div>
-
+</div>
