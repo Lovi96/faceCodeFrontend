@@ -12,27 +12,27 @@ export class RegPageComponent {
 
   user: User;
 
-  // email: string = "place@holder.com";
-  // password: string = "jelszo";
-  // pwAgain: string = "jelszo";
-  // yearOfBirth: number = 1997;
-  // gender: string = "FEMALE";
-  // firstName: string = "Virág";
-  // lastName: string = "Kiss";
-  // address: string = "Aranyközép út 69.";
-  // city: string = "Smallville";
-  // phone: string = "telefoááám";
+  email: string = "place@holder.com";
+  password: string = "jelszo";
+  pwAgain: string = "jelszo";
+  yearOfBirth: number = 1997;
+  gender: string = "FEMALE";
+  firstName: string = "Virág";
+  lastName: string = "Kiss";
+  address: string = "Aranyközép út 69.";
+  city: string = "Smallville";
+  phone: string = "telefoááám";
 
-  email: string;
-  password: string;
-  pwAgain: string;
-  yearOfBirth: number;
-  gender: string;
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  phone: string;
+  // email: string;
+  // password: string;
+  // pwAgain: string;
+  // yearOfBirth: number;
+  // gender: string;
+  // firstName: string;
+  // lastName: string;
+  // address: string;
+  // city: string;
+  // phone: string;
 
   exceptionMessage: string;
 

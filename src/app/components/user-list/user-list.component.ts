@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RelationshipService} from '../../services/relationship-service.service';
 import {User} from '../../classes/User';
+import {MyGuard} from "../../guards/can-active.guard";
 
 @Component({
   selector: 'app-user-list',

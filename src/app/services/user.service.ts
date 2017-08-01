@@ -36,8 +36,4 @@ export class UserService {
     return this.http.get(this.singleUser + id).map((response: Response) => response.json().payload);
   }
 
-  getStrangers() {
-
-  }
-
 }

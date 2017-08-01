@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/facecode'
+  baseUrl: 'http://192.168.150.172:8080/facecode'
 };

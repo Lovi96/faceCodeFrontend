@@ -10,7 +10,8 @@ import {LoginComponent} from './components/login/login.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {RelationshipService} from './services/relationship-service.service';
 import {HttpWrapper} from "./services/http-wrapper.service";
-import { CompactUserVievComponent } from './components/compact-user-viev/compact-user-viev.component';
+import {CompactUserVievComponent} from './components/compact-user-viev/compact-user-viev.component';
+import {MyGuard} from "./guards/can-active.guard";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { CompactUserVievComponent } from './components/compact-user-viev/compact
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, RelationshipService, HttpWrapper],
+  providers: [UserService, RelationshipService, HttpWrapper, MyGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
