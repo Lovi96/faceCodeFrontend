@@ -1,7 +1,7 @@
 .bg {
   background: #ecffec url("./app/bg.jpg") no-repeat;
 }
-footer { background-color: #fffdfe; min-height:350px; font-family: 'Open Sans', sans-serif; }
+footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color: #000000; font-weight:700;}
 
@@ -20,7 +20,23 @@ footer { background-color: #fffdfe; min-height:350px; font-family: 'Open Sans', 
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
-
+.containerColor{
+  background: rgba(2, 250, 146, 0.4);
+  border-radius: 20px;
+  border: 10px #248e49;
+}
+.menuItemCustom:hover {
+  background: rgba(0, 65, 101, 0.36);
+  transition: background 500ms ease;
+}
+.face:hover{
+  color: #3b5998;
+  transition: color 500ms ease;
+}
+.code:hover{
+  color: #b52d30;
+  transition: color 500ms ease;
+}
 .icon-ul { list-style-type:none !important; margin:0px; padding:0px;}
 .icon-ul li { line-height:75px; width:100%; float:left;}
 .icon { float:left; margin-right:5px;}

@@ -1,4 +1,9 @@
-<div *ngIf="this.user">
-  <p style="border: 1px black solid">{{user.firstName}} {{user.lastName}}
-    birth year: {{user.birthDate}} city: {{user.city}}</p>
+<div *ngIf="this.user" class="panel panel-info">
+  <div class="panel-heading">
+    {{user.firstName}} {{user.lastName}}
+  </div>
+  <div class="panel-body">
+    <p style="margin: 5px;">
+    Dob: {{user.birthDate}}, City of birth: {{user.city}}</p>
+  </div>
 </div>
