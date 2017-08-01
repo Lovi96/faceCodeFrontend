@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'reg', component: RegPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'friends', component: UserListComponent, canActivate: [MyGuard]},
-  {path: 'profile/:id', component: ProfilePageComponent, canActivate: [MyGuard]}
+  {path: 'profile/:id', component: ProfilePageComponent}
 
 ];
 
