@@ -2,7 +2,7 @@
   background: #ecffec url("assets/facecode_geci_2.jpg") no-repeat;
   background-size: cover;
 }
-footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', sans-serif; }
+footer { background-color: rgba(236, 255, 236, 0.69); min-height:350px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color: #000000; font-weight:700;}
 
@@ -22,12 +22,12 @@ footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', 
   -o-transform: scale(1.1);
 }
 .containerColor{
-  background: rgba(2, 250, 146, 0.4);
+  background: rgba(236, 255, 236, 0.69);
   border-radius: 20px;
   border: 10px #248e49;
 }
 .menuItemCustom:hover {
-  background: rgba(0, 65, 101, 0.36);
+  background: rgba(236, 255, 236, 0.69);
   transition: background 500ms ease;
 }
 @keyframes faceCodeAnim {
@@ -74,9 +74,8 @@ footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', 
   position: relative;
   animation: swimInAnim 3s;
   animation-delay: 0.5s;
-
 }
 @keyframes swimInAnim {
-  from {left: 500px;}
+  from {left: 600px;}
   to {left: 000px;}
 }
