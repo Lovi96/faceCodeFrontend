@@ -1,35 +1,63 @@
 <div align="center">
 
-  <div style="max-width: 300px; min-width: 175px" align="center">
+  <div style="max-width: 400px; min-width: 175px;" class="containerColor" align="center">
     <h1>Register</h1>
 
     <div *ngIf="this.exceptionMessage">{{exceptionMessage}}</div>
-    <div *ngIf="this.success">Successfully registration! :))))))))</div>
+    <div *ngIf="this.success">Successful registration!</div>
+    <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
+      <li>
+        <div class="input-group">
+          <input id="email" class="form-control" name="email" type="email" [(ngModel)]="email"
+                 placeholder="Email address*"><span class="input-group-addon">*</span>
+        </div>
+      </li>
+      <li>
+        <div class="input-group">
+          <input id="pw" class="form-control" type="password" [(ngModel)]="password" placeholder="Password*"><span
+          class="input-group-addon">*</span>
+        </div>
+      </li>
+      <li>
+        <div class="input-group">
+          <input id="pwagain" class="form-control" type="password" [(ngModel)]="pwAgain"
+                 placeholder="Password again*"><span class="input-group-addon">*</span>
+        </div>
+      </li>
+      <li>
+        <div class="input-group">
+          <input id="yearofbirth" class="form-control" name="firstName" type="number" [(ngModel)]="yearOfBirth"
+                 placeholder="Year of birth*"><span class="input-group-addon">*</span>
+        </div>
+      </li>
+    </ul>
+    <div class="input-group">
+      <p>Sex*</p>
+      <label><input type="radio" class="form-control" name="gender" value="MALE" [(ngModel)]="gender">Male</label>
+      <div><label><input type="radio" class="form-control" name="gender" value="FEMALE"
+                         [(ngModel)]="gender">Female</label></div>
+      <br>
+    </div>
+    <input id="firstName" style="max-width: 350px" class="form-control" name="firstName" [(ngModel)]="firstName"
+           placeholder="First Name">
+    <input id="lastName" style="max-width: 350px" class="form-control" name="lastName" [(ngModel)]="lastName"
+           placeholder="Last Name">
 
-    <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email address*">
-    <input id="pw" type="password" [(ngModel)]="password" placeholder="Password*">
-    <input id="pwagain" type="password" [(ngModel)]="pwAgain" placeholder="Password again*">
+    <input id="address" style="max-width: 350px" class="form-control" name="address" [(ngModel)]="address"
+           placeholder="Address">
+    <input id="city" style="max-width: 350px" class="form-control" name="city" [(ngModel)]="city" placeholder="City">
 
-    <input id="yearofbirth" name="firstName" type="number" [(ngModel)]="yearOfBirth" placeholder="Year of birth*">
-
-    <p>Sex*</p>
-    <label><input type="radio" name="gender" value="MALE" [(ngModel)]="gender">Male</label>
-    <label>Female<input type="radio" name="gender" value="FEMALE" [(ngModel)]="gender"></label>
-    <br><br>
-
-    <input id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="First Name">
-    <input id="lastName" name="lastName" [(ngModel)]="lastName" placeholder="Last Name">
-
-    <input id="address" name="address" [(ngModel)]="address" placeholder="Address">
-    <input id="city" name="city" [(ngModel)]="city" placeholder="City">
-
-    <input id="phone" name="phone" [(ngModel)]="phone" placeholder="Phone Number">
+    <input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="phone"
+           placeholder="Phone Number">
 
     <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
 
-    <button type="submit" (click)="send()">Create Account</button>
-
-
+    <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="send()">Create
+      Account
+    </button>
+    <div>
+      <a routerLink="/login" routerLinkActive="active">Already have an account? Click here to Login!</a>
+    </div>
   </div>
 </div>
 

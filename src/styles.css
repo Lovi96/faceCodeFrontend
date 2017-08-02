@@ -1,5 +1,6 @@
 .bg {
-  background: #ecffec url("./app/bg.jpg") no-repeat;
+  background: #ecffec url("assets/facecode_geci_2.jpg") no-repeat;
+  background-size: cover;
 }
 footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
@@ -29,9 +30,28 @@ footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', 
   background: rgba(0, 65, 101, 0.36);
   transition: background 500ms ease;
 }
+@keyframes faceCodeAnim {
+  from {background-color: red;}
+  to {background-color: blue;}
+}
+.face{
+  animation: faceCodeAnim 2s infinite;
+  color: #FFFFFF;
+  animation-direction: alternate;
+}
+@keyframes faceCodeAnim2 {
+  from {background-color: blue;}
+  to {background-color: red;}
+}
+.code{
+  animation: faceCodeAnim2 2s infinite;
+  color: #FFFFFF;
+  animation-direction: alternate;
+}
 .face:hover{
   color: #3b5998;
   transition: color 500ms ease;
+
 }
 .code:hover{
   color: #b52d30;
@@ -50,4 +70,13 @@ footer { background-color: #ecffec; min-height:350px; font-family: 'Open Sans', 
 .bottom_ul li { float:left; line-height:40px;}
 .bottom_ul li:after { content:"/"; color: #498ea7; margin-right:8px; margin-left:8px;}
 .bottom_ul li a { color: #fffdfe;  font-size:12px;}
+.swimLogo{
+  position: relative;
+  animation: swimInAnim 3s;
+  animation-delay: 0.5s;
 
+}
+@keyframes swimInAnim {
+  from {left: 500px;}
+  to {left: 000px;}
+}

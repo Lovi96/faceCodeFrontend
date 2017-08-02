@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'reg', component: RegPageComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'friends', component: UserListComponent, canActivate: [MyGuard]},
+  {path: 'friends', component: UserListComponent},// canActivate: [MyGuard]},
   {path: 'profile/:id', component: ProfilePageComponent}
 
 ];
