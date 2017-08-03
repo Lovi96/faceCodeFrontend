@@ -1,0 +1,48 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {ProfilePagePost} from "../../classes/ProfilePagePost";
+import {ProfilePagePostService} from "../../services/profile-page-post.service";
+
+@Component({
+  selector: 'app-profile-page-post',
+  templateUrl: './profile-page-post.component.html',
+  styleUrls: ['./profile-page-post.component.css']
+})
+export class ProfilePagePostComponent implements OnInit {
+
+  @Input() post: ProfilePagePost;
+  onEdit = false;
+  message: string;
+
+  constructor(private service: ProfilePagePostService) {
+  }
+
+  ngOnInit() {
+  }
+
+  edit() {
+    if (this.onEdit) {
+
+      return;
+    }
+    this.onEdit = !this.onEdit;
+  }
+
+  save() {
+    this.onEdit = false;
+    this.service.update(this.post).subscribe(result => {
+      console.log(result);
+      if (result.payload) {
+        this.post = result.payload as ProfilePagePost;
+        this.message = "asszem sikerült";
+      } else {
+        this.message = "bai fan";
+      }
+    });
+  }
+
+  revert() {
+    this.onEdit = false;
+    this.service.getPost(this.post.id).subscribe(post => this.post);
+  }
+
+}

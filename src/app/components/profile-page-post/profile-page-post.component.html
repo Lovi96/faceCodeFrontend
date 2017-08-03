@@ -1,0 +1,20 @@
+<div>
+  <div *ngIf="onEdit; else noEdit">
+    <input [(ngModel)]="post.title" placeholder="Title"/>
+    <br>
+    <textarea [(ngModel)]="post.content" placeholder="Title"></textarea>
+    <br>
+    <button (click)="revert()">bitch go back</button>
+    <button (click)="save()">Save</button>
+  </div>
+
+  <ng-template #noEdit>
+    <div>
+      <p>{{post.title}}</p>
+      <p>{{post.content}}</p>
+      <button (click)="edit()">Editke buttonka</button>
+    </div>
+  </ng-template>
+
+  <div *ngIf="message">{{message}}</div>
+</div>

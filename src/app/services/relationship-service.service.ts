@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from '../classes/User';
-import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
+import {Response, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Result} from '../classes/Result';
 import {HttpWrapper} from './http-wrapper.service';

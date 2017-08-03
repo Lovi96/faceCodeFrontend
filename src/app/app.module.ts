@@ -13,6 +13,8 @@ import {HttpWrapper} from "./services/http-wrapper.service";
 import {CompactUserVievComponent} from './components/compact-user-viev/compact-user-viev.component';
 import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
+import { ProfilePagePostComponent } from './components/profile-page-post/profile-page-post.component';
+import {ProfilePagePostService} from "./services/profile-page-post.service";
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import {ProfilePageComponent} from './components/profile-page/profile-page.compo
     UserListComponent,
     CompactUserVievComponent,
     ProfilePageComponent,
+    ProfilePagePostComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import {ProfilePageComponent} from './components/profile-page/profile-page.compo
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, RelationshipService, HttpWrapper, MyGuard],
+  providers: [UserService, RelationshipService, HttpWrapper, MyGuard, ProfilePagePostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

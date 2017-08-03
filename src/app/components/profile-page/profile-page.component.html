@@ -1,9 +1,13 @@
 <p>
-  {{user.firstName}}  {{user.lastName}}
+  {{user.firstName}} {{user.lastName}}
   <br>
-  {{user.email}}  {{user.birthDate}}
+  {{user.email}} {{user.birthDate}}
   <br>
-  {{user.address}}  {{user.city}}
+  {{user.address}} {{user.city}}
   <br>
   {{user.phone}}
-</p>
+
+<div *ngFor="let post of posts">
+  <app-profile-page-post [post]="post"></app-profile-page-post>
+</div>
+
