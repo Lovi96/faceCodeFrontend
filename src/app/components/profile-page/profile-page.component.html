@@ -1,3 +1,4 @@
+<div class="containerColor">
 <p>
   {{user.firstName}} {{user.lastName}}
   <br>
@@ -6,8 +7,8 @@
   {{user.address}} {{user.city}}
   <br>
   {{user.phone}}
-
+</p>
 <div *ngFor="let post of posts">
   <app-profile-page-post [post]="post"></app-profile-page-post>
 </div>
-
+</div>

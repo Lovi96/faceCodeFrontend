@@ -1,18 +1,18 @@
-<div>
+<div class="containerColor">
   <div *ngIf="onEdit; else noEdit">
-    <input [(ngModel)]="post.title" placeholder="Title"/>
+    <input class="form-control" [(ngModel)]="post.title" placeholder="Title"/>
     <br>
-    <textarea [(ngModel)]="post.content" placeholder="Title"></textarea>
+    <textarea class="form-control" [(ngModel)]="post.content" placeholder="Title"></textarea>
     <br>
-    <button (click)="revert()">bitch go back</button>
-    <button (click)="save()">Save</button>
+    <button class="btn btn-default" (click)="revert()">bitch go back</button>
+    <button class="btn btn-default" (click)="save()">Save</button>
   </div>
 
   <ng-template #noEdit>
     <div>
       <p>{{post.title}}</p>
       <p>{{post.content}}</p>
-      <button (click)="edit()">Editke buttonka</button>
+      <button class="btn btn-default" (click)="edit()">Editke buttonka</button>
     </div>
   </ng-template>
 
