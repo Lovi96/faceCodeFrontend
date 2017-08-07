@@ -32,11 +32,11 @@
       </li>
     </ul>
     <div class="input-group">
-      <p>Sex*</p>
+      <p>Choose one of the only 2 existing genders: *</p>
       <label><input type="radio" class="form-control" name="gender" value="MALE" [(ngModel)]="gender">Male</label>
-      <div><label><input type="radio" class="form-control" name="gender" value="FEMALE"
-                         [(ngModel)]="gender">Female</label></div>
-      <br>
+      <label><input type="radio" class="form-control" name="gender" value="FEMALE"
+                         [(ngModel)]="gender">Female</label>
+        <br>
     </div>
     <input id="firstName" style="max-width: 350px" class="form-control" name="firstName" [(ngModel)]="firstName"
            placeholder="First Name">
@@ -51,7 +51,9 @@
            placeholder="Phone Number">
 
     <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
-
+    <p style="padding: 25px">A Fiók létrehozása gombra kattintva elfogadod a Feltételeinket, és kijelented, hogy elolvastad az
+      <a href="#">Adatkezelési szabályzat</a> szövegét, beleértve a cookie-k használatáról szóló ismertető dokumentumot is.</p>
+     <p> A <label style="color:#3b5998;">Face</label><label style="color: #e91000;">Code</label>tól SMS-értesítések érkezhetnek neked, és bármikor lehetőséged van ezek használatát kikapcsolni.</p>
     <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="send()">Create
       Account
     </button>

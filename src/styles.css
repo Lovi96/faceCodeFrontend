@@ -55,7 +55,9 @@ footer { background-color: rgba(236, 255, 236, 0.69); min-height:350px; font-fam
 .face:hover{
   color: #3b5998;
   transition: color 500ms ease;
-
+}
+.selectedItem{
+  background: rgba(236, 255, 236, 0.69)
 }
 .code:hover{
   color: #b52d30;
