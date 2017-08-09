@@ -2,7 +2,7 @@
   <div align="center" style="margin-top: 25px;margin-bottom: 25px;" class="containerColor loginPanel">
     <h1 style="margin-bottom: 25px;margin-top: 25px">Log in</h1>
 
-    <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
+    <div *ngIf="this.feedbackMessage">{{this.feedbackMessage}}</div>
 
     <input id="email" style="margin-top:50px;max-width: 350px" class="form-control" name="email" type="email" [(ngModel)]="email" placeholder="Email address">
     <br>
