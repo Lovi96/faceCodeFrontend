@@ -16,24 +16,33 @@ export class UserService {
   registerURL = environment.baseUrl + '/account/register';
   loginURL = environment.baseUrl + '/account/login';
   singleUser = environment.baseUrl + '/account/getuser/';
+  updateURL = environment.baseUrl + '/account/edit';
 
   constructor(private http: HttpWrapper) {
   }
 
-  registerUser(user: User): Observable<Result> {
-
+  postUserData(user: User): Observable<Result> {
     return this.http.post(this.registerURL, user)
+      .map((response: Response) => response.json());
+  }
+  updateUserData(user: User): Observable<Result> {
+    return this.http.post(this.updateURL, user)
       .map((response: Response) => response.json());
   }
 
   logIn(loginCredentials: LoginCredentials): Observable<any> {
-
     return this.http.post(this.loginURL, loginCredentials)
-      .map((response: Response) => response.json())
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   getUser(id: number): Observable<User> {
     return this.http.get(this.singleUser + id).map((response: Response) => response.json().payload);
+  }
+
+  getLoggedInUserId(): number {
+    return +localStorage.getItem('userID');
   }
 
 }

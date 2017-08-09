@@ -6,6 +6,8 @@ import 'rxjs/add/operator/switchMap';
 import {Location} from '@angular/common'
 import {ProfilePagePostService} from "../../services/profile-page-post.service";
 import {ProfilePagePost} from "../../classes/ProfilePagePost";
+import {environment} from "../../../environments/environment";
+import {FCException} from "../../classes/FCException";
 
 
 @Component({
@@ -18,6 +20,10 @@ export class ProfilePageComponent implements OnInit {
   user: User;
   posts: ProfilePagePost[];
   id: string;
+  onEdit: boolean;
+  feedbackMessage: string;
+
+  imageURL = environment.baseUrl + '/account/profileimage';
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private profilePagePostService: ProfilePagePostService) {
@@ -28,10 +34,45 @@ export class ProfilePageComponent implements OnInit {
       .switchMap((params: ParamMap) => this.id = params.get('id')).subscribe();
 
     this.userService.getUser(+this.id)
-      .subscribe(user => this.user = user);
+      .subscribe(user => {
+        this.user = user;
+        this.user.password = '';
+      });
 
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
 
+
+  }
+
+  edit(): void {
+    this.onEdit = true;
+  }
+
+  revert(): void {
+    this.onEdit = false;
+    this.userService.getUser(+this.id).subscribe(user => this.user = user);
+  }
+
+  save(): void {
+    this.onEdit = false;
+    this.userService.updateUserData(this.user).subscribe(result => {
+      if (result.payload) {
+        this.userService.getUser(+this.id).subscribe(user => {
+          this.user = user;
+          this.user.password = '';
+        });
+      }
+      if (result.exception) {
+        const stackTraceOjbect = result.exception.stackTrace[0];
+        this.feedbackMessage = stackTraceOjbect.fileName + ' ' + stackTraceOjbect.lineNumber;
+        if (result.exception.statusCode) {
+          this.feedbackMessage = FCException.get(result.exception.statusCode);
+        }
+        if (result.exception.localizedMessage) {
+          this.feedbackMessage = result.exception.localizedMessage.toString();
+        }
+      }
+    })
   }
 
 }

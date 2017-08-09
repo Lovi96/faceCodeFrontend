@@ -28,7 +28,7 @@
     </button>
   </div>
 
-  <div *ngIf="this.exceptionMessage">{{this.exceptionMessage}}</div>
+  <div *ngIf="this.feedbackMessage">{{this.feedbackMessage}}</div>
 
   <div *ngFor="let user of users">
     <app-compact-user-viev [user]="user"></app-compact-user-viev>

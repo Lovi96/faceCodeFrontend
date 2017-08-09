@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {UserService} from '../../services/user.service'
 import {LoginCredentials} from '../../classes/login-cred'
 import {OnInit} from '@angular/core'
-import { FCException} from '../../classes/FCException'
+import {FCException} from '../../classes/FCException'
 
 @Component({
   selector: 'app-login',
@@ -37,17 +37,24 @@ export class LoginComponent implements OnInit {
         if (x.exception.statusCode) {
           this.exceptionMessage = FCException.get(x.exception.statusCode);
         } else {
-          const stackTraceOjbect = x.exception.stackTrace[0];
-          this.exceptionMessage = stackTraceOjbect.fileName + ' ' + stackTraceOjbect.lineNumber;
+          const stackTraceObject = x.exception.stackTrace[0];
+          this.exceptionMessage = stackTraceObject.fileName + ' ' + stackTraceObject.lineNumber;
         }
       }
       if (x.payload) {
-        const token = x.payload;
-        console.log(token);
-        localStorage.setItem('token', token);
+        this.setToken(x.payload.token);
+        this.setUserId(x.payload.userID);
         this.exceptionMessage = 'Logged in successfully';
       }
     })
+  }
+
+  setToken(token: number): void {
+    localStorage.setItem('token', token.toString());
+  }
+
+  setUserId(userId: number): void {
+    localStorage.setItem('userID', userId.toString());
   }
 
   makeNavbarVisible()

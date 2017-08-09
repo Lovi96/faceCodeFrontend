@@ -1,5 +1,50 @@
-<div class="containerColor">
-<p>
+<img src="{{imageURL}}/{{id}}">
+
+<div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px"
+     class="containerColor loginPanel" align="center">
+  <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
+    <li>
+      <div class="input-group">
+        <input id="pw" class="form-control" type="password" [(ngModel)]="user.password" placeholder="Password*"><span
+        class="input-group-addon">*</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-group">
+        <input id="pwagain" class="form-control" type="password" [(ngModel)]="pwAgain"
+               placeholder="Password again*"><span class="input-group-addon">*</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-group">
+        <input id="yearofbirth" class="form-control" name="firstName" type="number" [(ngModel)]="user.birthDate"
+               placeholder="Year of birth*"><span class="input-group-addon">*</span>
+      </div>
+    </li>
+  </ul>
+
+  <input id="firstName" style="max-width: 350px" class="form-control" name="firstName" [(ngModel)]="user.firstName"
+         placeholder="First Name">
+  <input id="lastName" style="max-width: 350px" class="form-control" name="lastName" [(ngModel)]="user.lastName"
+         placeholder="Last Name">
+
+  <input id="address" style="max-width: 350px" class="form-control" name="address" [(ngModel)]="user.address"
+         placeholder="Address">
+  <input id="city" style="max-width: 350px" class="form-control" name="city" [(ngModel)]="user.city" placeholder="City">
+
+  <input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="user.phone"
+         placeholder="Phone Number">
+
+  <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="save()">Save
+  </button>
+  <br>
+  <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="revert()">Cancel
+  </button>
+
+
+</div>
+
+<ng-template #noEdit>
   {{user.firstName}} {{user.lastName}}
   <br>
   {{user.email}} {{user.birthDate}}
@@ -7,8 +52,10 @@
   {{user.address}} {{user.city}}
   <br>
   {{user.phone}}
-</p>
+  <button (click)="edit()">edit</button>
+</ng-template>
+
+
 <div *ngFor="let post of posts">
   <app-profile-page-post [post]="post"></app-profile-page-post>
-</div>
 </div>

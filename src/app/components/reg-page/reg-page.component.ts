@@ -34,7 +34,7 @@ export class RegPageComponent {
   // city: string;
   // phone: string;
 
-  exceptionMessage: string;
+  feedBackMessage: string;
 
   success: boolean;
 
@@ -43,26 +43,26 @@ export class RegPageComponent {
 
   send(): void {
     if (this.password !== this.pwAgain) {
-      this.exceptionMessage = "Passwords don't match";
+      this.feedBackMessage = "Passwords don't match";
       return;
     }
 
     this.success = false;
-    this.exceptionMessage = null;
+    this.feedBackMessage = null;
     this.user = new User(this.email, this.password, this.yearOfBirth, this.gender,
       this.firstName, this.lastName, this.address, this.city, this.phone);
-    this.userService.registerUser(this.user).subscribe(x => {
+    this.userService.postUserData(this.user).subscribe(x => {
       console.log(x);
 
 
       if (x.exception) {
         const stackTraceOjbect = x.exception.stackTrace[0];
-        this.exceptionMessage = stackTraceOjbect.fileName + " " + stackTraceOjbect.lineNumber;
+        this.feedBackMessage = stackTraceOjbect.fileName + " " + stackTraceOjbect.lineNumber;
         if (x.exception.statusCode) {
-          this.exceptionMessage = FCException.get(x.exception.statusCode);
+          this.feedBackMessage = FCException.get(x.exception.statusCode);
         }
         if (x.exception.localizedMessage) {
-          this.exceptionMessage = x.exception.localizedMessage.toString();
+          this.feedBackMessage = x.exception.localizedMessage.toString();
         }
       }
       if (x.payload) {

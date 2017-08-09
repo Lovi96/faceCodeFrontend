@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 
 @Injectable()
-export class HttpWrapper {
+export class   HttpWrapper {
 
   constructor(private http: Http) {
   }
