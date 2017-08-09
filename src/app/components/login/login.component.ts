@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit {
     this.loginCredentail = new LoginCredentials(this.email, this.password);
     this.userService.logIn(this.loginCredentail).subscribe(x => {
       console.log(x);
+    this.makeWelcomeGoAway();
+    this.makeFooterGoAway();
+    this.makeBackgroundPlain();
+    this.makeNavbarVisible();
+    this.makeLoginGoAway();
       if (x.exception) {
         if (x.exception.statusCode) {
           this.exceptionMessage = FCException.get(x.exception.statusCode);
@@ -45,4 +50,28 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  makeNavbarVisible()
+  {
+    document.getElementById("navBar").style.visibility = "visible";
+  }
+
+  makeBackgroundPlain()
+  {
+    document.getElementById("bodyOfPage").style.backgroundImage = "";
+  }
+
+  makeWelcomeGoAway()
+  {
+    document.getElementById("goAway").innerHTML = "";
+  }
+
+  makeFooterGoAway()
+  {
+    document.getElementById("footerElement").innerText = "";
+  }
+
+  makeLoginGoAway()
+  {
+    document.getElementById("loginElement").innerHTML = "";
+  }
 }

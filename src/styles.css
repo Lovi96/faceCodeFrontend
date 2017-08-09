@@ -1,7 +1,8 @@
 .bg {
-  background: #ecffec url("assets/facecode_geci_2.jpg") no-repeat;
+  background: #ecffec url("") no-repeat;
   background-size: cover;
 }
+
 footer { background-color: rgba(236, 255, 236, 0.69); min-height:350px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color: #000000; font-weight:700;}
@@ -42,6 +43,9 @@ footer { background-color: rgba(236, 255, 236, 0.69); min-height:350px; font-fam
   animation: faceCodeAnim 2s infinite;
   color: #FFFFFF;
   animation-direction: alternate;
+}
+#navBar{
+  visibility: hidden;
 }
 @keyframes faceCodeAnim2 {
   from {background-color: blue;}
