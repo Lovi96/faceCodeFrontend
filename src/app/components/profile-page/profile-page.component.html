@@ -1,7 +1,12 @@
 <img src="{{imageURL}}/{{id}}">
+<div>
+  <input type="file" id="image">
+  <button (click)="imageService.uploadProfileImage()">kügyed</button>
+</div>
 
 <div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px"
      class="containerColor loginPanel" align="center">
+  <p *ngIf="feedbackMessage">{{feedbackMessage}}</p>
   <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
     <li>
       <div class="input-group">
@@ -45,14 +50,16 @@
 </div>
 
 <ng-template #noEdit>
-  {{user.firstName}} {{user.lastName}}
-  <br>
-  {{user.email}} {{user.birthDate}}
-  <br>
-  {{user.address}} {{user.city}}
-  <br>
-  {{user.phone}}
-  <button (click)="edit()">edit</button>
+  <div *ngIf="user">
+    {{user.firstName}} {{user.lastName}}
+    <br>
+    {{user.email}} {{user.birthDate}}
+    <br>
+    {{user.address}} {{user.city}}
+    <br>
+    {{user.phone}}
+    <button (click)="edit()">edit</button>
+  </div>
 </ng-template>
 
 

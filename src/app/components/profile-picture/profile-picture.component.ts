@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpWrapper} from "../../services/http-wrapper.service";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-profile-picture',
@@ -10,7 +11,7 @@ import {HttpWrapper} from "../../services/http-wrapper.service";
 export class ProfilePictureComponent implements OnInit {
 
 
-  constructor(private http: HttpWrapper) {
+  constructor(private http: HttpWrapper, private imageService: ImageService) {
   }
 
   ngOnInit() {

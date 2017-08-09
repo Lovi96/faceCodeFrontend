@@ -3,6 +3,7 @@ import {UserService} from '../../services/user.service'
 import {LoginCredentials} from '../../classes/login-cred'
 import {OnInit} from '@angular/core'
 import {FCException} from '../../classes/FCException'
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   exceptionMessage: string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -59,38 +60,24 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userID', userId.toString());
   }
 
-  makeNavbarVisible()
-  {
+  makeNavbarVisible() {
     document.getElementById("navBar").style.visibility = "visible";
   }
 
-  makeBackgroundPlain()
-  {
+  makeBackgroundPlain() {
     document.getElementById("bodyOfPage").style.backgroundImage = "";
   }
 
-  makeWelcomeGoAway()
-  {
+  makeWelcomeGoAway() {
     document.getElementById("goAway").innerHTML = "";
   }
 
-  makeFooterGoAway()
-  {
+  makeFooterGoAway() {
     document.getElementById("footerElement").innerText = "";
   }
 
-  makeLoginGoAway()
-  {
+  makeLoginGoAway() {
     document.getElementById("loginElement").innerHTML = "";
   }
-=========
-  setToken(token: number): void {
-    localStorage.setItem('token', token.toString());
-  }
 
-  setUserId(userId: number): void {
-    localStorage.setItem('userID', userId.toString());
-  }
-
->>>>>>>>> Temporary merge branch 2
 }
