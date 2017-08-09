@@ -6,6 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import {Location} from '@angular/common'
 import {ProfilePagePostService} from "../../services/profile-page-post.service";
 import {ProfilePagePost} from "../../classes/ProfilePagePost";
+import {environment} from "../../../environments/environment";
 
 
 @Component({
@@ -18,6 +19,8 @@ export class ProfilePageComponent implements OnInit {
   user: User;
   posts: ProfilePagePost[];
   id: string;
+
+  imageURL = environment.baseUrl + '/account/profileimage';
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private profilePagePostService: ProfilePagePostService) {

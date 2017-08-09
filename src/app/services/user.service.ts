@@ -27,13 +27,19 @@ export class UserService {
   }
 
   logIn(loginCredentials: LoginCredentials): Observable<any> {
-
     return this.http.post(this.loginURL, loginCredentials)
-      .map((response: Response) => response.json())
+      .map((response: Response) => {
+        return response.json();
+      });
   }
+
 
   getUser(id: number): Observable<User> {
     return this.http.get(this.singleUser + id).map((response: Response) => response.json().payload);
+  }
+
+  getLoggedInUserId(): number {
+    return +localStorage.getItem('userID');
   }
 
 }
