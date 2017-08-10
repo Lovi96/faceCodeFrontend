@@ -58,12 +58,17 @@
 
     <ng-template #noEdit>
       <div style="alignment: center" align="center" *ngIf="user">
-        {{user.firstName}} {{user.lastName}}
+        <div style="font-size: 20px;font-style: oblique">
+        {{user.firstName}} {{user.lastName}}</div>
+        <hr>
         <br>
-        {{user.email}} {{user.birthDate}}
+        E-mail and DoB:
+        <div>{{user.email}} {{user.birthDate}}</div>
         <br>
-        {{user.address}} {{user.city}}
+        Address and City:
+        <div>{{user.address}} {{user.city}}</div>
         <br>
+        Phone numbah:
         {{user.phone}}
         <button *ngIf="user.id == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">edit
         </button>
