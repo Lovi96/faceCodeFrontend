@@ -34,8 +34,6 @@ export class ProfilePageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    document.getElementById("navBar").style.visibility = "visible";
-
 
     this.route.paramMap
       .switchMap((params: ParamMap) => this.id = params.get('id') == null ? this.userService.getLoggedInUserId()
@@ -48,6 +46,10 @@ export class ProfilePageComponent implements OnInit {
       });
 
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
+  }
+
+  makeNavbarVisible() {
+    document.getElementById("navBar").style.visibility = "hidden";
   }
 
   edit(): void {

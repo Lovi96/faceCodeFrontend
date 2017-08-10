@@ -1,18 +1,49 @@
-<div id="loginElement">
+<!--<div style="text-align: center">-->
 <div style="max-width: 400px; min-width: 175px;text-align: center;margin-bottom:250px" class="container">
-  <div style="margin-top: 25px;margin-bottom: 25px;" align="center" class="containerColor loginPanel">
-    <h1 style="margin-bottom: 25px;margin-top: 25px">Login</h1>
+  <div id="loginElement">
+    <div id="goAway">
+      <h1>
+        Welcome to
+      </h1>
+      <img class="swimLogo" src="/assets/facecodelogo.png">
+    </div>
 
-    <div *ngIf="this.feedbackMessage">{{this.feedbackMessage}}</div>
+    <div style="margin-top: 25px;margin-bottom: 25px;" align="center" class="containerColor loginPanel">
+      <h1 style="margin-bottom: 25px;margin-top: 25px">Login</h1>
 
-    <input id="email" style="margin-top:50px;max-width: 350px" class="form-control" name="email" type="email" [(ngModel)]="email" placeholder="Email address">
-    <br>
-    <input id="password" style="max-width: 350px" class="form-control" type="password" [(ngModel)]="password" placeholder="Password">
-    <br>
-    <button type="button" style="margin-bottom: 50px;margin-top: 20px;" class="btn btn-primary" (click)="logIn()">Login</button>
-    <div><a style="color:darkred" href="">Forgot your password? Click here!</a></div>
-    <div><a style="color:darkred" class="footerleft" routerLink="/reg" routerLinkActive="active">Don't have an account? Click here to register!</a>
-  </div>
+      <div *ngIf="this.feedbackMessage">{{this.feedbackMessage}}</div>
+
+      <input id="email" style="margin-top:50px;max-width: 350px" class="form-control" name="email" type="email"
+             [(ngModel)]="email" placeholder="Email address">
+      <br>
+      <input id="password" style="max-width: 350px" class="form-control" type="password" [(ngModel)]="password"
+             placeholder="Password">
+      <br>
+      <button type="button" style="margin-bottom: 50px;margin-top: 20px;" class="btn btn-primary" (click)="logIn()">
+        Login
+      </button>
+      <div><a style="color:darkred" href="">Forgot your password? Click here!</a></div>
+      <div><a style="color:darkred" class="footerleft" routerLink="/reg" routerLinkActive="active">Don't have an
+        account? Click here to register!</a>
+      </div>
+    </div>
   </div>
 </div>
+
+<div id="footerElement">
+  <div class="copyright">
+    <div class="container">
+      <div class="col-md-6">
+        <p style="color: #ecffec">$teamName© 2017 - All Rights reserved</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="bottom_ul">
+          <li><a href="#">127.0.0.1</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Site Map</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

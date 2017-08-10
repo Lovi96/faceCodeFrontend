@@ -21,10 +21,7 @@ export class MyGuard implements CanActivate {
     if (!token) {
       return false
     }
-
     return this.http.post(environment.baseUrl + '/account/tokencheck', token)
-      .map((response: Response) => {
-        return response.json().status;
-      });
+      .map((response: Response) => response.json().status);
   }
 }
