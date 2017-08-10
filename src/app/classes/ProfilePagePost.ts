@@ -4,5 +4,5 @@ export class ProfilePagePost {
   ownerID: number;
   title: string;
   content: string;
-
+  postedOn: string;
 }

@@ -33,12 +33,7 @@ export class ProfilePagePostComponent implements OnInit {
     this.onEdit = false;
     this.service.update(this.post).subscribe(result => {
       console.log(result);
-      if (result.payload) {
-        this.post = result.payload as ProfilePagePost;
-        this.message = "asszem sikerült";
-      } else {
-        this.message = "bai fan";
-      }
+
     });
   }
 
