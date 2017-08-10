@@ -5,15 +5,14 @@ import {LoginComponent} from "./components/login/login.component"
 import {UserListComponent} from "./components/user-list/user-list.component"
 import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from "./components/profile-page/profile-page.component";
-import {ProfilePictureComponent} from "./components/profile-picture/profile-picture.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'reg', component: RegPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'friends', component: UserListComponent},// canActivate: [MyGuard]},
+  {path: 'profile', component: ProfilePageComponent},
   {path: 'profile/:id', component: ProfilePageComponent},
-  {path: 'profilepicture', component: ProfilePictureComponent}
 ];
 
 @NgModule({

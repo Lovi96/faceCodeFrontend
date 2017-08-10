@@ -8,6 +8,7 @@ import {ProfilePagePostService} from "../../services/profile-page-post.service";
 import {ProfilePagePost} from "../../classes/ProfilePagePost";
 import {environment} from "../../../environments/environment";
 import {FCException} from "../../classes/FCException";
+import {ImageService} from "../../services/image.service";
 
 
 @Component({
@@ -22,16 +23,21 @@ export class ProfilePageComponent implements OnInit {
   id: string;
   onEdit: boolean;
   feedbackMessage: string;
+  pwAgain: string;
 
   imageURL = environment.baseUrl + '/account/profileimage';
 
   constructor(private userService: UserService, private route: ActivatedRoute,
-              private profilePagePostService: ProfilePagePostService) {
+              private profilePagePostService: ProfilePagePostService,
+              public imageService: ImageService) {
   }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
+
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.id = params.get('id')).subscribe();
+      .switchMap((params: ParamMap) => this.id = params.get('id') == null ? this.userService.getLoggedInUserId()
+        .toString() : params.get('id')).subscribe();
 
     this.userService.getUser(+this.id)
       .subscribe(user => {
@@ -40,8 +46,10 @@ export class ProfilePageComponent implements OnInit {
       });
 
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
+  }
 
-
+  makeNavbarVisible() {
+    document.getElementById("navBar").style.visibility = "hidden";
   }
 
   edit(): void {
@@ -54,6 +62,10 @@ export class ProfilePageComponent implements OnInit {
   }
 
   save(): void {
+    if (this.user.password !== this.pwAgain) {
+      this.feedbackMessage = 'Passwords aren\'t match';
+      return;
+    }
     this.onEdit = false;
     this.userService.updateUserData(this.user).subscribe(result => {
       if (result.payload) {

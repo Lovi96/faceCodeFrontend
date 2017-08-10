@@ -3,6 +3,7 @@ import {UserService} from '../../services/user.service'
 import {LoginCredentials} from '../../classes/login-cred'
 import {OnInit} from '@angular/core'
 import {FCException} from '../../classes/FCException'
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,37 +17,45 @@ export class LoginComponent implements OnInit {
 
   loginCredentail: LoginCredentials;
 
-  exceptionMessage: string;
+  feedbackMessage: string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.makeNavbarUnvisible();
   }
 
   logIn() {
     this.loginCredentail = new LoginCredentials(this.email, this.password);
     this.userService.logIn(this.loginCredentail).subscribe(x => {
       console.log(x);
-      this.makeWelcomeGoAway();
-      this.makeFooterGoAway();
-      this.makeBackgroundPlain();
-      this.makeNavbarVisible();
-      this.makeLoginGoAway();
+      // this.makeWelcomeGoAway();
+      // this.makeFooterGoAway();
+      // this.makeBackgroundPlain();
+      // this.makeLoginGoAway();
       if (x.exception) {
         if (x.exception.statusCode) {
-          this.exceptionMessage = FCException.get(x.exception.statusCode);
+          this.feedbackMessage = FCException.get(x.exception.statusCode);
         } else {
           const stackTraceObject = x.exception.stackTrace[0];
-          this.exceptionMessage = stackTraceObject.fileName + ' ' + stackTraceObject.lineNumber;
+          this.feedbackMessage = stackTraceObject.fileName + ' ' + stackTraceObject.lineNumber;
         }
       }
       if (x.payload) {
+
         this.setToken(x.payload.token);
         this.setUserId(x.payload.userID);
-        this.exceptionMessage = 'Logged in successfully';
+        this.feedbackMessage = 'Logged in successfully';
+
+        this.makeNavbarVisible();
+        this.router.navigate(['/profile']);
       }
     })
+  }
+
+  makeNavbarVisible() {
+    document.getElementById("navBar").style.visibility = "visible";
   }
 
   setToken(token: number): void {
@@ -57,28 +66,24 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userID', userId.toString());
   }
 
-  makeNavbarVisible()
-  {
-    document.getElementById("navBar").style.visibility = "visible";
+  makeNavbarUnvisible() {
+    document.getElementById("navBar").style.visibility = "hidden";
   }
 
-  makeBackgroundPlain()
-  {
+  makeBackgroundPlain() {
     document.getElementById("bodyOfPage").style.backgroundImage = "";
   }
 
-  makeWelcomeGoAway()
-  {
+  makeWelcomeGoAway() {
     document.getElementById("goAway").innerHTML = "";
   }
 
-  makeFooterGoAway()
-  {
+  makeFooterGoAway() {
     document.getElementById("footerElement").innerText = "";
   }
 
-  makeLoginGoAway()
-  {
+  makeLoginGoAway() {
     document.getElementById("loginElement").innerHTML = "";
   }
+
 }

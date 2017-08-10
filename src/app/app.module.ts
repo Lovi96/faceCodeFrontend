@@ -15,7 +15,7 @@ import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
 import { ProfilePagePostComponent } from './components/profile-page-post/profile-page-post.component';
 import {ProfilePagePostService} from "./services/profile-page-post.service";
-import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
+import {ImageService} from "./services/image.service";
 
 
 @NgModule({
@@ -27,7 +27,6 @@ import { ProfilePictureComponent } from './components/profile-picture/profile-pi
     CompactUserVievComponent,
     ProfilePageComponent,
     ProfilePagePostComponent,
-    ProfilePictureComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +34,7 @@ import { ProfilePictureComponent } from './components/profile-picture/profile-pi
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, RelationshipService, HttpWrapper, MyGuard, ProfilePagePostService],
+  providers: [UserService, RelationshipService, HttpWrapper, MyGuard, ProfilePagePostService, ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

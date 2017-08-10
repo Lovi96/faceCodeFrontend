@@ -1,7 +1,14 @@
-<img src="{{imageURL}}/{{id}}">
+<div style="max-width:550px;" class="container containerColor" align="center">
+<img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
+<div>
+  <input type="file" class="btn-default" id="image">
+  <button class="btn btn-default" (click)="imageService.uploadProfileImage()">kügyed</button>
+</div>
 
-<div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px"
-     class="containerColor loginPanel" align="center">
+<div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px;text-align: center"
+     class="containerColor" align="center">
+  <div style="alignment: center" align="center">
+  <p *ngIf="feedbackMessage">{{feedbackMessage}}</p>
   <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
     <li>
       <div class="input-group">
@@ -35,27 +42,31 @@
   <input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="user.phone"
          placeholder="Phone Number">
 
-  <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="save()">Save
+  <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-default" (click)="save()">Save
   </button>
   <br>
-  <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="revert()">Cancel
+  <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-default" (click)="revert()">Cancel
   </button>
+
+  </div>
+</div>
+<div style="alignment: center" align="center">
+<ng-template #noEdit>
+  <div style="alignment: center" align="center" *ngIf="user">
+    {{user.firstName}} {{user.lastName}}
+    <br>
+    {{user.email}} {{user.birthDate}}
+    <br>
+    {{user.address}} {{user.city}}
+    <br>
+    {{user.phone}}
+    <button class="btn btn-default" (click)="edit()">edit</button>
+  </div>
+</ng-template>
+</div>
 
 
 </div>
-
-<ng-template #noEdit>
-  {{user.firstName}} {{user.lastName}}
-  <br>
-  {{user.email}} {{user.birthDate}}
-  <br>
-  {{user.address}} {{user.city}}
-  <br>
-  {{user.phone}}
-  <button (click)="edit()">edit</button>
-</ng-template>
-
-
-<div *ngFor="let post of posts">
+<div align="center" style="padding: 30px" *ngFor="let post of posts">
   <app-profile-page-post [post]="post"></app-profile-page-post>
 </div>

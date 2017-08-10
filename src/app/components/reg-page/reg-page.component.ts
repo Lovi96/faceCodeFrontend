@@ -43,7 +43,7 @@ export class RegPageComponent {
 
   send(): void {
     if (this.password !== this.pwAgain) {
-      this.feedBackMessage = "Passwords don't match";
+      this.feedBackMessage = 'Passwords aren\'t match';
       return;
     }
 
