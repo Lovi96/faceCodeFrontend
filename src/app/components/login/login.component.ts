@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
 
         this.makeNavbarVisible();
         this.router.navigate(['/profile']);
+        this.makeBackgroundPlain();
       }
     })
   }

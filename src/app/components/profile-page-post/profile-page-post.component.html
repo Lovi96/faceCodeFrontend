@@ -12,7 +12,7 @@
     <div>
       <p>{{post.title}}</p>
       <p>{{post.content}}</p>
-      <button class="btn btn-default" (click)="edit()">Editke buttonka</button>
+      <button *ngIf="post.ownerID == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">Editke buttonka</button>
     </div>
   </ng-template>
 

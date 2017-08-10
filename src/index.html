@@ -15,9 +15,6 @@
 </head>
 <body id="bodyOfPage" class="bg">
 
-  <app-root></app-root>
-
-</body>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
         crossorigin="anonymous"></script>
@@ -27,11 +24,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<app-root></app-root>
 <script>
   $("document").ready(function () {
-    var bgs = ["bg1.jpg","bg2.jpg","bg3.jpg","bg4.jpg","bg5.jpg"];
-    var randomBg = bgs[Math.floor((Math.random()*5))];
-    $("#bodyOfPage").css("background-image","url(assets/"+randomBg+")");
+    var bgs = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
+    var randomBg = bgs[Math.floor((Math.random() * 5))];
+    $("#bodyOfPage").css("background-image", "url(./assets/" + randomBg + ")");
   })
 </script>
+</body>
+
 </html>

@@ -1,7 +1,7 @@
 export class ProfilePagePost {
 
   id: number;
-  userID: number;
+  ownerID: number;
   title: string;
   content: string;
 

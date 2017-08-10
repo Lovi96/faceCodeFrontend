@@ -1,6 +1,6 @@
 <div style="max-width:550px;" class="container containerColor" align="center">
 <img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
-<div>
+<div *ngIf="user.id == userService.getLoggedInUserId()">
   <input type="file" class="btn-default" id="image">
   <button class="btn btn-default" (click)="imageService.uploadProfileImage()">kügyed</button>
 </div>
@@ -60,7 +60,7 @@
     {{user.address}} {{user.city}}
     <br>
     {{user.phone}}
-    <button class="btn btn-default" (click)="edit()">edit</button>
+    <button *ngIf="user.id == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">edit</button>
   </div>
 </ng-template>
 </div>

@@ -27,9 +27,9 @@ export class ProfilePageComponent implements OnInit {
 
   imageURL = environment.baseUrl + '/account/profileimage';
 
-  constructor(private userService: UserService, private route: ActivatedRoute,
+  constructor(public userService: UserService, private route: ActivatedRoute,
               private profilePagePostService: ProfilePagePostService,
-              public imageService: ImageService) {
+              private imageService: ImageService) {
   }
 
 
