@@ -15,7 +15,6 @@ import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
 import { ProfilePagePostComponent } from './components/profile-page-post/profile-page-post.component';
 import {ProfilePagePostService} from "./services/profile-page-post.service";
-import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import {ImageService} from "./services/image.service";
 
 
@@ -28,7 +27,6 @@ import {ImageService} from "./services/image.service";
     CompactUserVievComponent,
     ProfilePageComponent,
     ProfilePagePostComponent,
-    ProfilePictureComponent,
   ],
   imports: [
     BrowserModule,

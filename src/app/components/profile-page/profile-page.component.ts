@@ -33,8 +33,9 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.id = params.get('id')).subscribe();
+      .switchMap((params: ParamMap) => this.id = params.get('id') == null ? this.userService.getLoggedInUserId().toString() : params.get('id')).subscribe();
 
     this.userService.getUser(+this.id)
       .subscribe(user => {
@@ -56,7 +57,7 @@ export class ProfilePageComponent implements OnInit {
 
   save(): void {
     if (this.user.password !== this.pwAgain) {
-      this.feedbackMessage = 'Passwords are\'nt match';
+      this.feedbackMessage = 'Passwords aren\'t match';
       return;
     }
     this.onEdit = false;
