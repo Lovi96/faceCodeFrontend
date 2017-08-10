@@ -32,10 +32,14 @@ export class ProfilePageComponent implements OnInit {
               public imageService: ImageService) {
   }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
+    document.getElementById("navBar").style.visibility = "visible";
+
 
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.id = params.get('id') == null ? this.userService.getLoggedInUserId().toString() : params.get('id')).subscribe();
+      .switchMap((params: ParamMap) => this.id = params.get('id') == null ? this.userService.getLoggedInUserId()
+        .toString() : params.get('id')).subscribe();
 
     this.userService.getUser(+this.id)
       .subscribe(user => {
@@ -80,6 +84,5 @@ export class ProfilePageComponent implements OnInit {
       }
     })
   }
-
 
 }

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.makeNavbarUnvisible();
   }
 
   logIn() {
@@ -32,7 +33,6 @@ export class LoginComponent implements OnInit {
       this.makeWelcomeGoAway();
       this.makeFooterGoAway();
       this.makeBackgroundPlain();
-      this.makeNavbarVisible();
       this.makeLoginGoAway();
       if (x.exception) {
         if (x.exception.statusCode) {
@@ -60,8 +60,8 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userID', userId.toString());
   }
 
-  makeNavbarVisible() {
-    document.getElementById("navBar").style.visibility = "visible";
+  makeNavbarUnvisible() {
+    document.getElementById("navBar").style.visibility = "hidden";
   }
 
   makeBackgroundPlain() {
