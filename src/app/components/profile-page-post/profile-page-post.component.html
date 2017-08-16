@@ -4,7 +4,7 @@
     <br>
     <textarea class="form-control" [(ngModel)]="post.content" placeholder="Title"></textarea>
     <br>
-    <button class="btn btn-default" (click)="revert()">bitch go back</button>
+    <button class="btn btn-default" (click)="revert()">Cancel</button>
     <button class="btn btn-default" (click)="save()">Save</button>
   </div>
 
@@ -12,7 +12,7 @@
     <div>
       <p>{{post.title}}</p>
       <p>{{post.content}}</p>
-      <button *ngIf="post.ownerID == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">Editke buttonka</button>
+      <button *ngIf="post.ownerID == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">Edit</button>
     </div>
   </ng-template>
 

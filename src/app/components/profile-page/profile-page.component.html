@@ -1,9 +1,13 @@
 <div *ngIf="user">
   <div style="max-width:550px;" class="container containerColor" align="center">
-    <img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
+
+    <img id="image" width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
+    <div *ngIf="imageIsUpdated" ngIfThen="this.handleImageUpdate()">
+    </div>
+
     <div *ngIf="user.id == userService.getLoggedInUserId()">
       <input type="file" class="btn-default" id="image">
-      <button class="btn btn-default" (click)="imageService.uploadProfileImage()">kügyed</button>
+      <button class="btn btn-default" (click)="uploadImage()">Upload</button>
     </div>
 
     <div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px;text-align: center"
@@ -68,9 +72,9 @@
         Address and City:
         <div>{{user.address}} {{user.city}}</div>
         <br>
-        Phone numbah:
+        Phone number:
         {{user.phone}}
-        <button *ngIf="user.id == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">edit
+        <button *ngIf="user.id == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">Edit
         </button>
       </div>
     </ng-template>
