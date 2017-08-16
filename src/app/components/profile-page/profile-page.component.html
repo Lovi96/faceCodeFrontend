@@ -84,4 +84,8 @@
   <div align="center" style="padding: 30px" *ngFor="let post of posts">
     <app-profile-page-post [post]="post"></app-profile-page-post>
   </div>
+  <br>
+  <div *ngIf="user.id == userService.getLoggedInUserId()" class="containerColor" align="center" style="max-width: 550px;padding-top: 15px;padding-bottom: 15px;">
+  <app-new-user-post></app-new-user-post>
+  </div>
 </div>

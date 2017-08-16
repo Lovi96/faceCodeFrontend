@@ -13,9 +13,15 @@ export class ProfilePagePostService {
   postsURL = environment.baseUrl + '/profileposts/posts/';
   postUpdateURL = environment.baseUrl + '/profileposts/update/';
   singlePostURL = environment.baseUrl + '/profileposts/';
+  newPostURL = environment.baseUrl + '/profileposts/newpost';
 
   constructor(private http: HttpWrapper) {
   }
+
+  newPost(post: ProfilePagePost): Observable<Result>{
+    return this.http.post(this.newPostURL, post).map((response: Response) => response.json());
+  }
+
 
   getPosts(userID: number): Observable<ProfilePagePost[]> {
     return this.http.get(this.postsURL + userID.toString())
