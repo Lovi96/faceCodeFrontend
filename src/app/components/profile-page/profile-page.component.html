@@ -1,7 +1,7 @@
 <div *ngIf="user">
   <div style="max-width:550px;" class="container containerColor" align="center">
 
-    <img id="image" width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
+    <img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
     <div *ngIf="imageIsUpdated" ngIfThen="this.handleImageUpdate()">
     </div>
 

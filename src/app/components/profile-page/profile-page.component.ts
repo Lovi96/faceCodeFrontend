@@ -99,6 +99,7 @@ export class ProfilePageComponent implements OnInit {
       result => {
         if (!result.exception) {
           this.imageIsUpdated = true;
+          window.location.reload();
         }
       });
   }
