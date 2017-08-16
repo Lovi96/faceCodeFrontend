@@ -1,0 +1,9 @@
+<div class="containerColor" align="center" style="max-width: 550px;padding-top: 15px;padding-bottom: 15px;">
+  <p>{{feedbackMessage}}</p>
+  <br>
+  <input class="form-control" [(ngModel)]="post.title" placeholder="Title"/>
+  <br>
+  <textarea class="form-control" [(ngModel)]="post.content" placeholder="Content"></textarea>
+  <br>
+  <button class="btn btn-default" (click)="save()">Save</button>
+</div>
