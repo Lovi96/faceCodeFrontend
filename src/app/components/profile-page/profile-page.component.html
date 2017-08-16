@@ -63,7 +63,8 @@
     <ng-template #noEdit>
       <div style="alignment: center" align="center" *ngIf="user">
         <div style="font-size: 20px;font-style: oblique">
-        {{user.firstName}} {{user.lastName}}</div>
+          {{user.firstName}} {{user.lastName}}
+        </div>
         <hr>
         <br>
         E-mail and DoB:
@@ -81,11 +82,12 @@
 
 
   </div>
-  <div align="center" style="padding: 30px" *ngFor="let post of posts">
-    <app-profile-page-post [post]="post"></app-profile-page-post>
-  </div>
-  <br>
-  <div *ngIf="user.id == userService.getLoggedInUserId()" class="containerColor" align="center" style="max-width: 550px;padding-top: 15px;padding-bottom: 15px;">
-  <app-new-user-post></app-new-user-post>
-  </div>
+    <div align="center" style="padding: 30px" *ngFor="let post of posts">
+      <app-profile-page-post [post]="post"></app-profile-page-post>
+    </div>
+    <br>
+    <div *ngIf="user.id == userService.getLoggedInUserId()" align="center">
+
+      <app-new-user-post></app-new-user-post>
+    </div>
 </div>

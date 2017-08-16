@@ -2,7 +2,7 @@
   <div *ngIf="onEdit; else noEdit">
     <input class="form-control" [(ngModel)]="post.title" placeholder="Title"/>
     <br>
-    <textarea class="form-control" [(ngModel)]="post.content" placeholder="Title"></textarea>
+    <textarea class="form-control" [(ngModel)]="post.content" placeholder="Content"></textarea>
     <br>
     <button class="btn btn-default" (click)="revert()">Cancel</button>
     <button class="btn btn-default" (click)="save()">Save</button>
