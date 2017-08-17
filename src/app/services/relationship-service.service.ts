@@ -6,12 +6,15 @@ import {Result} from '../classes/Result';
 import {HttpWrapper} from './http-wrapper.service';
 import {environment} from '../../environments/environment'
 import 'rxjs/add/operator/map';
+import {Relationship} from "../classes/Relationship";
 
 @Injectable()
 export class RelationshipService {
 
   friendsURL = environment.baseUrl + '/relationship/friendlist';
   userSearch = environment.baseUrl + '/relationship/usersearch?';
+  relCheckURL = environment.baseUrl + '/relationship/check';
+  relreqURL = environment.baseUrl + '/relationship/edit';
 
   constructor(private http: HttpWrapper) {
   }
@@ -35,6 +38,19 @@ export class RelationshipService {
       .map((response: Response) => response.json());
   }
 
+  checkRelationhipStatus(userID: number) : Observable<Relationship>
+  {
 
+      return this.http.get(this.relCheckURL + '/' + userID).map((response: Response) => response.json());
+  }
+
+  sendFriendRequest(userID: number, status: number): Observable<Relationship>
+  {
+    let relationship = new Relationship();
+    relationship.userOneID = userID;
+    relationship.status = status;
+    relationship.actionUserID = userID;
+    return this.http.post(this.relreqURL, relationship).map((response: Response) => response.json());
+  }
 
 }
