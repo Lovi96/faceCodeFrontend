@@ -19,6 +19,7 @@ import {ImageService} from "./services/image.service";
 import {NewUserPostComponent} from './components/new-user-post/new-user-post.component';
 import {NewsfeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
 import {NewsfeedService} from "./services/newsfeed.service";
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {NewsfeedService} from "./services/newsfeed.service";
     ProfilePagePostComponent,
     NewUserPostComponent,
     NewsfeedPostComponent,
+    NewsFeedComponent,
   ],
   imports: [
     BrowserModule,

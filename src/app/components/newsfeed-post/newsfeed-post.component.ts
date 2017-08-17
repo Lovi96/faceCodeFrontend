@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NewsfeedPost} from "../../classes/NewsfeedPost";
 
 @Component({
   selector: 'app-newsfeed-post',
@@ -8,6 +9,8 @@ import {Component, OnInit} from '@angular/core';
 export class NewsfeedPostComponent implements OnInit {
 
   editable: boolean;
+
+  @Input() post: NewsfeedPost;
 
   constructor() {
   }
