@@ -13,10 +13,12 @@ import {HttpWrapper} from "./services/http-wrapper.service";
 import {CompactUserVievComponent} from './components/compact-user-viev/compact-user-viev.component';
 import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
-import { ProfilePagePostComponent } from './components/profile-page-post/profile-page-post.component';
+import {ProfilePagePostComponent} from './components/profile-page-post/profile-page-post.component';
 import {ProfilePagePostService} from "./services/profile-page-post.service";
 import {ImageService} from "./services/image.service";
-import { NewUserPostComponent } from './components/new-user-post/new-user-post.component';
+import {NewUserPostComponent} from './components/new-user-post/new-user-post.component';
+import {NewsfeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
+import {NewsfeedService} from "./services/newsfeed.service";
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { NewUserPostComponent } from './components/new-user-post/new-user-post.c
     ProfilePageComponent,
     ProfilePagePostComponent,
     NewUserPostComponent,
+    NewsfeedPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,13 @@ import { NewUserPostComponent } from './components/new-user-post/new-user-post.c
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, RelationshipService, HttpWrapper, MyGuard, ProfilePagePostService, ImageService],
+  providers: [UserService,
+    RelationshipService,
+    HttpWrapper,
+    MyGuard,
+    ProfilePagePostService,
+    ImageService,
+    NewsfeedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
