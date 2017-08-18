@@ -38,7 +38,7 @@ export class RelationshipService {
       .map((response: Response) => response.json());
   }
 
-  checkRelationhipStatus(userID: number) : Observable<Relationship>
+  checkRelationhipStatus(userID: number) : Observable<Result>
   {
 
       return this.http.get(this.relCheckURL + '/' + userID).map((response: Response) => response.json());
@@ -49,7 +49,7 @@ export class RelationshipService {
     let relationship = new Relationship();
     relationship.userOneID = userID;
     relationship.status = status;
-    relationship.actionUserID = userID;
+    console.log(relationship);
     return this.http.post(this.relreqURL, relationship).map((response: Response) => response.json());
   }
 
