@@ -1,0 +1,11 @@
+<div *ngIf="relation">
+  <div *ngIf="userService.getLoggedInUserId() != user.id">
+    <!-- This div is for the buttons for the relationship-button component. Needs to be integrated into userprofile -->
+    <button *ngIf="relation.status == -1" (click)="createRelationship(0)">Send friend request</button>
+    <button *ngIf="(relation.status == 0) && (relation.actionUserID == userService.getLoggedInUserId())">Request pending</button>
+    <button *ngIf="(relation.status == 0) && (relation.actionUserID != userService.getLoggedInUserId())" (click)="createRelationship(1)">Accept request</button>
+    <button *ngIf="relation.status == 1">You are friends!</button>
+    <button *ngIf="relation.status == 1" (click)="createRelationship(3)" >Remove friend</button>
+    <button *ngIf="relation.status != 2" (click)="createRelationship(2)" >Block user</button>
+  </div>
+</div>

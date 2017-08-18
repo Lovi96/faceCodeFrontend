@@ -20,6 +20,7 @@ import {NewUserPostComponent} from './components/new-user-post/new-user-post.com
 import {NewsfeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
 import {NewsfeedService} from "./services/newsfeed.service";
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
+import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
     CompactUserVievComponent,
     ProfilePageComponent,
     ProfilePagePostComponent,
+    RelationshipButtonComponent,
     NewUserPostComponent,
     NewsfeedPostComponent,
     NewsFeedComponent,

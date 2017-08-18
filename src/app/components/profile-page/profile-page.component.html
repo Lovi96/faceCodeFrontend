@@ -1,6 +1,6 @@
 <div *ngIf="user">
   <div style="max-width:550px;" class="container containerColor" align="center">
-
+    <app-relationship-button [user]="user"></app-relationship-button>
     <img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
     <div *ngIf="imageIsUpdated" ngIfThen="this.handleImageUpdate()">
     </div>
