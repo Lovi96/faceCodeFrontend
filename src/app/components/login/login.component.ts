@@ -3,7 +3,10 @@ import {UserService} from '../../services/user.service'
 import {LoginCredentials} from '../../classes/login-cred'
 import {OnInit} from '@angular/core'
 import {FCException} from '../../classes/FCException'
+import {Http} from '@angular/http';
 import {Router} from "@angular/router";
+import {MyGuard} from "../../guards/can-active.guard";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -19,12 +22,18 @@ export class LoginComponent implements OnInit {
 
   feedbackMessage: string;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private myGuard:MyGuard,private http: Http, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.makeNavbarUnvisible();
+    localStorage.clear();
+    const token = this.myGuard.getToken();
+    if(token != null){
+      this.router.navigate(['/profile']);
+    }
   }
+
 
   logIn() {
     this.loginCredentail = new LoginCredentials(this.email, this.password);

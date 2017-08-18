@@ -14,4 +14,7 @@ export class AppComponent {
   constructor(private userService: UserService, private router: Router) {
   }
 
+  logOut(){
+    localStorage.clear();
+  }
 }
