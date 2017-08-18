@@ -1,7 +1,17 @@
-<div *ngIf="post.type === newsFeedTypes.TEXT">
-  <div *ngIf="post">
-    <p>{{userName}}</p>
-    <p>{{post.title}}</p>
-    <p>{{post}}</p>
+<div ngSwitch="post.type">
+  <p>{{userName}}</p>
+  <p>{{post.title}}</p>
+
+  <div *ngSwitchCase="newsFeedTypes.TEXT">
+    <p>{{post.content}}</p>
   </div>
+
+  <div *ngSwitchCase="newsFeedTypes.IMAGE">
+    <img src="{{post.content}}">
+  </div>
+
+  <div *ngSwitchCase="newsFeedTypes.VIDEO">
+    <video width="1080" controls src="{{post.content}}" type="video/mp4"></video>
+  </div>
+
 </div>
