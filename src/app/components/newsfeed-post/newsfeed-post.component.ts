@@ -1,21 +1,25 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NewsfeedPost} from "../../classes/NewsfeedPost";
+import {NewsFeedPost} from '../../classes/NewsfeedPost';
+import {NewsFeedType} from "../../classes/NewsFeedType";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-newsfeed-post',
   templateUrl: './newsfeed-post.component.html',
   styleUrls: ['./newsfeed-post.component.css']
 })
-export class NewsfeedPostComponent implements OnInit {
+export class NewsFeedPostComponent implements OnInit {
 
-  editable: boolean;
+  userName: string;
+  newsFeedTypes = NewsFeedType;
+  @Input() editable: boolean;
+  @Input() post: NewsFeedPost;
 
-  @Input() post: NewsfeedPost;
-
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.getUser(this.post.ownerID).subscribe(user => this.userName = user.fullName());
   }
 
 }

@@ -1,3 +1,7 @@
-<p>
-  newsfeed-post works!
-</p>
+<div *ngIf="post.type === newsFeedTypes.TEXT">
+  <div *ngIf="post">
+    <p>{{userName}}</p>
+    <p>{{post.title}}</p>
+    <p>{{post}}</p>
+  </div>
+</div>

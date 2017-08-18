@@ -24,8 +24,8 @@ export class User {
     this.id = id;
   }
 
-  // toString(): String{
-  //   return this.email;
-  // }
+  fullName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
 
 }

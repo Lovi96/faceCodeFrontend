@@ -17,7 +17,7 @@ import {ProfilePagePostComponent} from './components/profile-page-post/profile-p
 import {ProfilePagePostService} from "./services/profile-page-post.service";
 import {ImageService} from "./services/image.service";
 import {NewUserPostComponent} from './components/new-user-post/new-user-post.component';
-import {NewsfeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
+import {NewsFeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
 import {NewsfeedService} from "./services/newsfeed.service";
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
@@ -34,7 +34,7 @@ import { RelationshipButtonComponent } from './components/relationship-button/re
     ProfilePagePostComponent,
     RelationshipButtonComponent,
     NewUserPostComponent,
-    NewsfeedPostComponent,
+    NewsFeedPostComponent,
     NewsFeedComponent,
   ],
   imports: [

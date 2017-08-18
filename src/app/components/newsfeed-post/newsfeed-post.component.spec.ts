@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewsfeedPostComponent } from './newsfeed-post.component';
+import { NewsFeedPostComponent } from './newsfeed-post.component';
 
-describe('NewsfeedPostComponent', () => {
-  let component: NewsfeedPostComponent;
-  let fixture: ComponentFixture<NewsfeedPostComponent>;
+describe('NewsFeedPostComponent', () => {
+  let component: NewsFeedPostComponent;
+  let fixture: ComponentFixture<NewsFeedPostComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsfeedPostComponent ]
+      declarations: [ NewsFeedPostComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewsfeedPostComponent);
+    fixture = TestBed.createComponent(NewsFeedPostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NewsfeedService} from '../../services/newsfeed.service';
-import {NewsfeedPost} from '../../classes/NewsfeedPost';
+import {NewsFeedPost} from '../../classes/NewsfeedPost';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-news-feed',
@@ -9,13 +10,14 @@ import {NewsfeedPost} from '../../classes/NewsfeedPost';
 })
 export class NewsFeedComponent implements OnInit {
 
-  posts: NewsfeedPost[];
+  posts: NewsFeedPost[];
+  userID: number;
 
-  constructor(private newsFeedService: NewsfeedService) {
+  constructor(private newsFeedService: NewsfeedService, private userService: UserService) {
   }
 
   ngOnInit() {
     this.newsFeedService.getFeed().subscribe(posts => this.posts = posts);
+    this.userID = this.userService.getLoggedInUserId();
   }
-
 }
