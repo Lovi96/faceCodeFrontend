@@ -25,6 +25,10 @@ export class ProfilePageComponent implements OnInit {
   feedbackMessage: string;
   pwAgain: string;
 
+  imageIsUpdated: boolean;
+
+  image: HTMLImageElement;
+
   imageURL = environment.baseUrl + '/account/profileimage';
 
   constructor(public userService: UserService, private route: ActivatedRoute,
@@ -48,8 +52,10 @@ export class ProfilePageComponent implements OnInit {
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
   }
 
-  makeNavbarVisible() {
-    document.getElementById("navBar").style.visibility = "hidden";
+  handleImageUpdate(): void {
+    this.imageIsUpdated = false;
+    this.imageURL = '';
+    this.imageURL = environment.baseUrl + '/account/profileimage';
   }
 
   edit(): void {
@@ -68,23 +74,33 @@ export class ProfilePageComponent implements OnInit {
     }
     this.onEdit = false;
     this.userService.updateUserData(this.user).subscribe(result => {
-      if (result.payload) {
-        this.userService.getUser(+this.id).subscribe(user => {
-          this.user = user;
-          this.user.password = '';
-        });
-      }
-      if (result.exception) {
-        const stackTraceOjbect = result.exception.stackTrace[0];
-        this.feedbackMessage = stackTraceOjbect.fileName + ' ' + stackTraceOjbect.lineNumber;
-        if (result.exception.statusCode) {
-          this.feedbackMessage = FCException.get(result.exception.statusCode);
+        if (result.payload) {
+          this.userService.getUser(+this.id).subscribe(user => {
+            this.user = user;
+            this.user.password = '';
+          });
         }
-        if (result.exception.localizedMessage) {
-          this.feedbackMessage = result.exception.localizedMessage.toString();
+        if (result.exception) {
+          const stackTraceOjbect = result.exception.stackTrace[0];
+          this.feedbackMessage = stackTraceOjbect.fileName + ' ' + stackTraceOjbect.lineNumber;
+          if (result.exception.statusCode) {
+            this.feedbackMessage = FCException.get(result.exception.statusCode);
+          }
+          if (result.exception.localizedMessage) {
+            this.feedbackMessage = result.exception.localizedMessage.toString();
+          }
         }
       }
-    })
+    )
   }
 
+  uploadImage(): void {
+    this.imageService.uploadProfileImage().subscribe(
+      result => {
+        if (!result.exception) {
+          this.imageIsUpdated = true;
+          window.location.reload();
+        }
+      });
+  }
 }

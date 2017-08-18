@@ -17,6 +17,7 @@ import { ProfilePagePostComponent } from './components/profile-page-post/profile
 import {ProfilePagePostService} from "./services/profile-page-post.service";
 import {ImageService} from "./services/image.service";
 import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
+import { NewUserPostComponent } from './components/new-user-post/new-user-post.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { RelationshipButtonComponent } from './components/relationship-button/re
     ProfilePageComponent,
     ProfilePagePostComponent,
     RelationshipButtonComponent,
+    NewUserPostComponent,
   ],
   imports: [
     BrowserModule,
