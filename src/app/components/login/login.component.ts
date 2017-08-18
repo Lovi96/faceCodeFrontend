@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.makeNavbarUnvisible();
-    localStorage.clear();
     const token = this.myGuard.getToken();
     if(token != null){
       this.router.navigate(['/profile']);
