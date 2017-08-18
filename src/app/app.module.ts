@@ -16,6 +16,7 @@ import {ProfilePageComponent} from './components/profile-page/profile-page.compo
 import { ProfilePagePostComponent } from './components/profile-page-post/profile-page-post.component';
 import {ProfilePagePostService} from "./services/profile-page-post.service";
 import {ImageService} from "./services/image.service";
+import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
 import { NewUserPostComponent } from './components/new-user-post/new-user-post.component';
 
 
@@ -28,6 +29,7 @@ import { NewUserPostComponent } from './components/new-user-post/new-user-post.c
     CompactUserVievComponent,
     ProfilePageComponent,
     ProfilePagePostComponent,
+    RelationshipButtonComponent,
     NewUserPostComponent,
   ],
   imports: [

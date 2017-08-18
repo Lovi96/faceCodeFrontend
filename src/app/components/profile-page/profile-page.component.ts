@@ -47,7 +47,7 @@ export class ProfilePageComponent implements OnInit {
       .subscribe(user => {
         this.user = user;
         this.user.password = '';
-      });
+      }); 
 
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
   }
