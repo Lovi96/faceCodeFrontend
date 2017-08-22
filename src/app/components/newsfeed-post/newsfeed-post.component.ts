@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NewsFeedPost} from '../../classes/NewsfeedPost';
 import {NewsFeedType} from "../../classes/NewsFeedType";
 import {UserService} from "../../services/user.service";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-newsfeed-post',
@@ -12,15 +13,17 @@ export class NewsFeedPostComponent implements OnInit {
 
   userName: string;
   newsFeedTypes = NewsFeedType;
+  onEdit = false;
+
   @Input() editable: boolean;
   @Input() post: NewsFeedPost;
 
   constructor(private userService: UserService) {
+    // if (this.editable == null) { } for The Open-Closed Principle
   }
 
   ngOnInit() {
     this.userService.getUser(this.post.ownerID).subscribe(user => this.userName = user.fullName());
-
   }
 
 }

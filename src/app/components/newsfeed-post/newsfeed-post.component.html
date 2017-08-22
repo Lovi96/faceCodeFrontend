@@ -7,11 +7,11 @@
   </div>
 
   <div *ngSwitchCase="newsFeedTypes.IMAGE">
-    <img src="{{post.content}}">
+    <img width="1000px" src="{{post.content}}">
   </div>
 
   <div *ngSwitchCase="newsFeedTypes.VIDEO">
-    <video width="1080" controls src="{{post.content}}" type="video/mp4"></video>
+    <video width="1000px" controls src="{{post.content}}"></video>
   </div>
 
 </div>

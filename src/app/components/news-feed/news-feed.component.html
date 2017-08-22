@@ -1,7 +1,8 @@
-<div>
-
+<div style="max-width: 1080px">
   <div *ngFor="let post of posts">
-    <app-newsfeed-post [post]="post" [editable]="post.ownerID === userID"></app-newsfeed-post>
-  </div>
 
+    <app-newsfeed-post [post]="post" [editable]="post.ownerID == userID"></app-newsfeed-post>
+    <br>
+
+  </div>
 </div>
