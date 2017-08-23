@@ -47,6 +47,8 @@ export class ProfilePageComponent implements OnInit {
         this.user = user;
         this.user.password = '';
         this.imageURL.concat('/', this.id);
+        console.log(this.user);
+        console.log(this.user.getFullName());
       });
 
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);

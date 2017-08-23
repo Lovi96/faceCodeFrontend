@@ -49,8 +49,17 @@ export class RegPageComponent {
 
     this.success = false;
     this.feedBackMessage = null;
-    this.user = new User(this.email, this.password, this.yearOfBirth, this.gender,
-      this.firstName, this.lastName, this.address, this.city, this.phone);
+    this.user = new User({
+        email: this.email,
+        password: this.password,
+        yearOfBirth: this.yearOfBirth,
+        gender: this.gender,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        address: this.address,
+        city: this.city,
+        phone: this.phone
+    });
     this.userService.postUserData(this.user).subscribe(x => {
       console.log(x);
 

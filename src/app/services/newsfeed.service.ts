@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {NewsFeedPost} from '../classes/NewsfeedPost';
 import {environment} from '../../environments/environment';
 import {Response} from '@angular/http';
+import {Result} from "../classes/Result";
 
 
 @Injectable()
@@ -15,7 +16,7 @@ export class NewsfeedService {
   constructor(private http: HttpWrapper, private userService: UserService) {
   }
 
-  getFeed(): Observable<NewsFeedPost[]> {
+  getFeed(): Observable<Result> {
     return this.http.get(this.newsFeedURL).map((response: Response) => response.json());
   }
 }
