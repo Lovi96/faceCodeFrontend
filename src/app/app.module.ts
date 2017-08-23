@@ -18,6 +18,7 @@ import {ProfilePagePostService} from "./services/profile-page-post.service";
 import {ImageService} from "./services/image.service";
 import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
 import { NewUserPostComponent } from './components/new-user-post/new-user-post.component';
+import { FriendlistComponent } from './friendlist/friendlist.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NewUserPostComponent } from './components/new-user-post/new-user-post.c
     ProfilePagePostComponent,
     RelationshipButtonComponent,
     NewUserPostComponent,
+    FriendlistComponent,
   ],
   imports: [
     BrowserModule,
