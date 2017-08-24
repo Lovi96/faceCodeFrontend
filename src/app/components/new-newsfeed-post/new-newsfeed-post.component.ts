@@ -10,16 +10,18 @@ import {NewsfeedService} from "../../services/newsfeed.service";
 export class NewNewsfeedPostComponent implements OnInit {
 
   post: NewsFeedPost = new NewsFeedPost();
+  fileInputId = 'newPost';
 
   constructor(private service: NewsfeedService) {
   }
 
   ngOnInit() {
     this.post.type = 'TEXT';
+    this.post.shareLevel = 'PUBLIC';
   }
 
   save(): void {
-
+    this.service.newPost(this.post, this.fileInputId).subscribe();
   }
 
 }
