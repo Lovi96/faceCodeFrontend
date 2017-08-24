@@ -17,6 +17,7 @@ export class NewsFeedPostComponent implements OnInit {
 
   @Input() editable: boolean;
   @Input() post: NewsFeedPost;
+  @Input() index: number;
 
   constructor(private userService: UserService) {
     // if (this.editable == null) { } for The Open-Closed Principle
@@ -24,9 +25,11 @@ export class NewsFeedPostComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser(this.post.ownerID).subscribe(user => this.userName = user.getFullName());
-    console.log(this.post.type);
-    console.log(typeof this.post.type);
-    console.log(this.post.type === "TEXT");
+    console.log(this.index);
+  }
+
+  edit(): void {
+    this.onEdit = true;
   }
 
 }

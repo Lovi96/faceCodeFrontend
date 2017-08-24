@@ -1,22 +1,30 @@
 <div *ngIf="post" class="panel panel-info" style="max-width: 930px">
-  <div [ngSwitch]="post.type">
-    <div class="panel-heading">
-      <span style="float: left">{{userName}}</span>
-      <span style="float: right">{{post.postedOn}}</span>
-    </div>
-    <div class="panel-body">
-      <p style="text-align: center">{{post.title}}</p>
-      <div *ngSwitchCase="'TEXT'">
-        <p>{{post.content}}</p>
+  <ng-container *ngIf="!onEdit; else editView">
+    <ng-container [ngSwitch]="post.type">
+      <div>
+        <span style="float: left">{{userName}}</span>
+        <span style="float: right">{{post.postedOn}}</span>
       </div>
+      <div class="panel-body">
+        <p style="text-align: center">{{post.title}}</p>
+        <div *ngSwitchCase="'TEXT'">
+          <p>{{post.content}}</p>
+        </div>
 
-      <div *ngSwitchCase="'IMAGE'">
-        <img width="1000px" src="{{post.content}}">
-      </div>
+        <div *ngSwitchCase="'IMAGE'">
+          <img width="1000px" src="{{post.content}}">
+        </div>
 
-      <div *ngSwitchCase="'VIDEO'">
-        <video width="1000px" controls src="{{post.content}}"></video>
+        <div *ngSwitchCase="'VIDEO'">
+          <video width="1000px" controls src="{{post.content}}"></video>
+        </div>
       </div>
-    </div>
-  </div>
+    </ng-container>
+  </ng-container>
+  <ng-template #editView>
+
+  </ng-template>
+
+
+  id="{{index}}"
 </div>
