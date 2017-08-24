@@ -13,10 +13,11 @@ export class ImageService {
   }
 
   uploadProfileImage(): Observable<Result> {
+
     let formData = new FormData();
     formData.append('image', document.getElementById('image')['files'][0]);
     let headers = new Headers();
-    return this.http.post(environment.baseUrl + '/account/profileimage/upload', formData).map((response: Response) =>
+    return this.http.post(environment.baseUrl + '/media/profileimage/upload', formData).map((response: Response) =>
       response.json());
   }
 

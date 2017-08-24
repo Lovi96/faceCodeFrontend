@@ -5,6 +5,7 @@ import {LoginComponent} from "./components/login/login.component"
 import {UserListComponent} from "./components/user-list/user-list.component"
 import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from "./components/profile-page/profile-page.component";
+import {NewsFeedComponent} from "./components/news-feed/news-feed.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'friends', component: UserListComponent},// canActivate: [MyGuard]},
   {path: 'profile', component: ProfilePageComponent},
   {path: 'profile/:id', component: ProfilePageComponent},
+  {path: 'newsfeed', component: NewsFeedComponent}
 ];
 
 @NgModule({

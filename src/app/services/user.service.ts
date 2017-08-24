@@ -38,11 +38,13 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get(this.singleUser + id).map((response: Response) => response.json().payload);
+    return this.http.get(this.singleUser + id).map((response: Response) => new User(response.json().payload));
   }
 
   getLoggedInUserId(): number {
     return +localStorage.getItem('userID');
   }
+
+
 
 }

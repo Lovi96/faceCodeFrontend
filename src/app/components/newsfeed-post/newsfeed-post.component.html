@@ -1,0 +1,48 @@
+<div *ngIf="post" class="panel panel-info" style="max-width: 930px">
+  <ng-container *ngIf="!onEdit; else editView">
+    <ng-container [ngSwitch]="post.type">
+      <div>
+        <span style="float: left">{{userName}}</span>
+        <span style="float: right">{{post.postedOn}}</span>
+      </div>
+      <div class="panel-body">
+        <p style="text-align: center">{{post.title}}</p>
+        <div *ngSwitchCase="'TEXT'">
+          <p>{{post.content}}</p>
+        </div>
+
+        <div *ngSwitchCase="'IMAGE'">
+          <img style="width: 70%; max-width: 1000px" src="{{post.content}}">
+        </div>
+
+        <div *ngSwitchCase="'VIDEO'">
+          <video style="width: 70%; max-width: 1000px" controls src="{{post.content}}"></video>
+        </div>
+      </div>
+    </ng-container>
+    <button (click)="edit()">Edit</button>
+  </ng-container>
+  <ng-template #editView>
+
+    <ng-container [ngSwitch]="post.type" align="center">
+
+      <input [(ngModel)]="post.title">
+
+      <div class="panel-body">
+
+        <div *ngSwitchCase="'TEXT'">
+          <input [(ngModel)]="post.content">
+        </div>
+
+        <div *ngSwitchCase="'IMAGE'">
+          <input id="{{index}}" type="file" accept="image/*">
+        </div>
+
+        <div *ngSwitchCase="'VIDEO'">
+          <input id="{{index}}" type="file" accept="video/*">
+        </div>
+      </div>
+    </ng-container>
+    <button (click)="cancel()">Cancel</button>
+  </ng-template>
+</div>

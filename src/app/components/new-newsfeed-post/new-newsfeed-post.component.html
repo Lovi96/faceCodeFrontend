@@ -1,0 +1,28 @@
+<div class="panel panel-info">
+  <input placeholder="Share your thoughts" [(ngModel)]="post.title">
+  <br>
+  <br>
+  <select [(ngModel)]="post.type">
+    <option [ngValue]="'TEXT'">Text post</option>
+    <option [ngValue]="'IMAGE'">Image post</option>
+    <option [ngValue]="'VIDEO'">Video post</option>
+  </select>
+  <ng-container [ngSwitch]="post.type" align="center">
+
+    <div class="panel-body">
+
+      <div *ngSwitchCase="'TEXT'">
+        <input [(ngModel)]="post.content" placeholder="Explain it">
+      </div>
+
+      <div *ngSwitchCase="'IMAGE'">
+        <input id="{{index}}" type="file" accept="image/*">
+      </div>
+
+      <div *ngSwitchCase="'VIDEO'">
+        <input id="{{index}}" type="file" accept="video/*">
+      </div>
+    </div>
+  </ng-container>
+  <button (click)="save()">Send</button>
+</div>

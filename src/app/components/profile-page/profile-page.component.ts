@@ -27,15 +27,14 @@ export class ProfilePageComponent implements OnInit {
 
   imageIsUpdated: boolean;
 
-  image: HTMLImageElement;
+  imageURL = environment.baseUrl + '/media/profileimage';
 
-  imageURL = environment.baseUrl + '/account/profileimage';
+  // imageURL = environment.baseUrl + '/account/profileimage';
 
   constructor(public userService: UserService, private route: ActivatedRoute,
               private profilePagePostService: ProfilePagePostService,
               private imageService: ImageService) {
   }
-
 
   ngOnInit(): void {
 
@@ -47,15 +46,12 @@ export class ProfilePageComponent implements OnInit {
       .subscribe(user => {
         this.user = user;
         this.user.password = '';
-      }); 
+        this.imageURL.concat('/', this.id);
+        console.log(this.user);
+        console.log(this.user.getFullName());
+      });
 
     this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
-  }
-
-  handleImageUpdate(): void {
-    this.imageIsUpdated = false;
-    this.imageURL = '';
-    this.imageURL = environment.baseUrl + '/account/profileimage';
   }
 
   edit(): void {

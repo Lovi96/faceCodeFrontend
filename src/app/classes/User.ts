@@ -10,22 +10,21 @@ export class User {
   phone: string;
   id: number;
 
-  constructor(email: string, password: string, yearOfBirth: number, gender: string, firstName: string,
-              lastName: string, address: string, city: string, phone: string, id?: number) {
-    this.email = email;
-    this.password = password;
-    this.birthDate = yearOfBirth;
-    this.gender = gender;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.address = address;
-    this.city = city;
-    this.phone = phone;
-    this.id = id;
+  constructor(payload: any) {
+    this.email = payload.email;
+    this.password = payload.password;
+    this.birthDate = payload.yearOfBirth;
+    this.gender = payload.gender;
+    this.firstName = payload.firstName;
+    this.lastName = payload.lastName;
+    this.address = payload.address;
+    this.city = payload.city;
+    this.phone = payload.phone;
+    this.id = payload.id;
   }
 
-  // toString(): String{
-  //   return this.email;
-  // }
+  public getFullName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
 
 }

@@ -18,14 +18,11 @@ export class RelationshipButtonComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.user);
     this.service.checkRelationhipStatus(this.user.id).subscribe(result => this.relation = result.payload as Relationship);
-    console.log(this.relation);
 
   }
 
   createRelationship(status : number) {
-    console.log(this.relation);
     this.service.sendFriendRequest(this.user.id, status).subscribe();
     this.service.checkRelationhipStatus(this.user.id).subscribe(result => this.relation = result.payload as Relationship);
   }

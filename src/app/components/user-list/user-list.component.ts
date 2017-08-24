@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   gender = '';
   relation = 1;
 
-  exceptionMessage: string;
+  feedbackMessage: string;
 
   constructor(private relationshipService: RelationshipService) {
   }

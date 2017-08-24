@@ -13,11 +13,15 @@ import {HttpWrapper} from "./services/http-wrapper.service";
 import {CompactUserVievComponent} from './components/compact-user-viev/compact-user-viev.component';
 import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
-import { ProfilePagePostComponent } from './components/profile-page-post/profile-page-post.component';
+import {ProfilePagePostComponent} from './components/profile-page-post/profile-page-post.component';
 import {ProfilePagePostService} from "./services/profile-page-post.service";
 import {ImageService} from "./services/image.service";
+import {NewUserPostComponent} from './components/new-user-post/new-user-post.component';
+import {NewsFeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
+import {NewsfeedService} from "./services/newsfeed.service";
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
-import { NewUserPostComponent } from './components/new-user-post/new-user-post.component';
+import { NewNewsfeedPostComponent } from './components/new-newsfeed-post/new-newsfeed-post.component';
 
 
 @NgModule({
@@ -31,6 +35,9 @@ import { NewUserPostComponent } from './components/new-user-post/new-user-post.c
     ProfilePagePostComponent,
     RelationshipButtonComponent,
     NewUserPostComponent,
+    NewsFeedPostComponent,
+    NewsFeedComponent,
+    NewNewsfeedPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,13 @@ import { NewUserPostComponent } from './components/new-user-post/new-user-post.c
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, RelationshipService, HttpWrapper, MyGuard, ProfilePagePostService, ImageService],
+  providers: [UserService,
+    RelationshipService,
+    HttpWrapper,
+    MyGuard,
+    ProfilePagePostService,
+    ImageService,
+    NewsfeedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
