@@ -5,18 +5,30 @@ import {Observable} from 'rxjs/Observable';
 import {NewsFeedPost} from '../classes/NewsfeedPost';
 import {environment} from '../../environments/environment';
 import {Response} from '@angular/http';
-import {Result} from "../classes/Result";
+import {Result} from '../classes/Result';
 
 
 @Injectable()
 export class NewsfeedService {
 
-  newsFeedURL: string = environment.baseUrl + '/newsfeed';
+  private newsFeedURL: string = environment.baseUrl + '/newsfeed';
+  private newPostURL: string = environment.baseUrl + '/newsfeed/new';
 
   constructor(private http: HttpWrapper, private userService: UserService) {
   }
 
   getFeed(): Observable<Result> {
     return this.http.get(this.newsFeedURL).map((response: Response) => response.json());
+  }
+
+  newPost(post: NewsFeedPost, fileInputId: string) {
+    const formData: FormData = new FormData();
+
+    formData.append('post', new Blob([JSON.stringify(post)], {type: 'application/json'}));
+
+    if (post.type !== 'TEXT') {
+      formData.append('file', document.getElementById(fileInputId)['files'][0]);
+    }
+    return this.http.post(this.newPostURL, formData).map(res => res.json());
   }
 }

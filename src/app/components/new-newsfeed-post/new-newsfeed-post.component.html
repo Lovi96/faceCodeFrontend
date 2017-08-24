@@ -2,6 +2,12 @@
   <input placeholder="Share your thoughts" [(ngModel)]="post.title">
   <br>
   <br>
+  <select [(ngModel)]="post.shareLevel">
+    <option [ngValue]="'PUBLIC'">Public</option>
+    <option [ngValue]="'FRIENDS'">Friends</option>
+    <option [ngValue]="'PRIVATE'">Private</option>
+  </select>
+  <br>
   <select [(ngModel)]="post.type">
     <option [ngValue]="'TEXT'">Text post</option>
     <option [ngValue]="'IMAGE'">Image post</option>
@@ -16,11 +22,11 @@
       </div>
 
       <div *ngSwitchCase="'IMAGE'">
-        <input id="{{index}}" type="file" accept="image/*">
+        <input id="{{fileInputId}}" type="file" accept="image/*">
       </div>
 
       <div *ngSwitchCase="'VIDEO'">
-        <input id="{{index}}" type="file" accept="video/*">
+        <input id="{{fileInputId}}" type="file" accept="video/*">
       </div>
     </div>
   </ng-container>
