@@ -21,6 +21,7 @@ import {NewsFeedPostComponent} from './components/newsfeed-post/newsfeed-post.co
 import {NewsfeedService} from "./services/newsfeed.service";
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
+import { NewNewsfeedPostComponent } from './components/new-newsfeed-post/new-newsfeed-post.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { RelationshipButtonComponent } from './components/relationship-button/re
     NewUserPostComponent,
     NewsFeedPostComponent,
     NewsFeedComponent,
+    NewNewsfeedPostComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NewsFeedPost} from '../../classes/NewsfeedPost';
 import {NewsFeedType} from "../../classes/NewsFeedType";
 import {UserService} from "../../services/user.service";
-import {isUndefined} from "util";
 
 @Component({
   selector: 'app-newsfeed-post',
@@ -30,6 +29,10 @@ export class NewsFeedPostComponent implements OnInit {
 
   edit(): void {
     this.onEdit = true;
+  }
+
+  cancel(): void {
+    this.onEdit = false;
   }
 
 }

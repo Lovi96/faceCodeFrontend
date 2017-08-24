@@ -1,5 +1,8 @@
 <div *ngIf="posts" align="center">
   <div style="max-width: 1080px; width: 70%">
+
+    <app-new-newsfeed-post></app-new-newsfeed-post>
+
     <div *ngFor="let post of posts;let i = index">
         <app-newsfeed-post [post]="post" [editable]="post.ownerID == userID" [index]="i"></app-newsfeed-post>
         <br>
