@@ -14,6 +14,7 @@ export class NewsFeedPostComponent implements OnInit {
   newsFeedTypes = NewsFeedType;
   onEdit = false;
 
+  @Input() index: number;
   @Input() editable: boolean;
   @Input() post: NewsFeedPost;
 
@@ -22,8 +23,8 @@ export class NewsFeedPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.userService.getUser(this.post.ownerID).subscribe(user => this.userName = user.getFullName());
-    // console.log(this.index);
+    this.userService.getUser(this.post.ownerID).subscribe(user => this.userName = user.getFullName());
+    console.log(this.index);
   }
 
   edit(): void {

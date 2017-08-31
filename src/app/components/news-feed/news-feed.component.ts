@@ -20,24 +20,23 @@ export class NewsFeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    //   this.newsFeedService.getFeed().subscribe(result => {
-    //     let posts = result.payload as NewsFeedPost[];
-    //     let postArray = new Array();
-    //     for (let i = 0; i < posts.length; i++) {
-    //       let post = new NewsFeedPost();
-    //       post.type = posts[i].type;
-    //       post.id = posts[i].id;
-    //       post.ownerID = posts[i].ownerID;
-    //       post.shareLevel = posts[i].shareLevel;
-    //       post.title = posts[i].title;
-    //       post.content = posts[i].content;
-    //       post.postedOn = posts[i].postedOn;
-    //       postArray.push(post);
-    //     }
-    //     this.posts = postArray;
-    //   });
-    //   this.userID = this.userService.getLoggedInUserId();
-    // }
-
+    this.newsFeedService.getFeed().subscribe(result => {
+      let posts = result.payload as NewsFeedPost[];
+      let postArray = new Array();
+      for (let i = 0; i < posts.length; i++) {
+        let post = new NewsFeedPost();
+        post.type = posts[i].type;
+        post.id = posts[i].id;
+        post.ownerID = posts[i].ownerID;
+        post.shareLevel = posts[i].shareLevel;
+        post.title = posts[i].title;
+        post.content = posts[i].content;
+        post.postedOn = posts[i].postedOn;
+        postArray.push(post);
+      }
+      this.posts = postArray;
+    });
+    this.userID = this.userService.getLoggedInUserId();
   }
+
 }
