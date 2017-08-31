@@ -16,7 +16,6 @@ export class NewsFeedPostComponent implements OnInit {
 
   @Input() editable: boolean;
   @Input() post: NewsFeedPost;
-  @Input() index: number;
 
   constructor(private userService: UserService) {
     // if (this.editable == null) { } for The Open-Closed Principle
