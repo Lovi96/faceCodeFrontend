@@ -1,54 +1,25 @@
-<div id="navBar">
-  <header class="navbar" role="banner">
-    <div class="container">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><span class="face">Face</span><span class="code">Code</span></a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li id="1stItem" class="menuItemCustom"><a routerLink="/reg" routerLinkActive="active">Registration</a>
-              </li>
-              <li id="2ndItem" class="menuItemCustom"><a href="/login" routerLinkActive="active">Login</a>
-              </li>
-              <li class="menuItemCustom"><a routerLink="/friends" routerLinkActive="active">Friends</a></li>
+<app-nav-bar></app-nav-bar>
 
-              <li class="menuItemCustom"><a routerLink="/profile" routerLinkActive="active">My Profile</a></li>
-              <li class="menuItemCustom"><a routerLink="/newsfeed" routerLinkActive="active">News Feed</a></li>
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1080px;margin-top:80px">
+    <!-- Middle Column -->
+    <div class="w3-content m7"  style="width: 80%; min-width: 400px">
 
-              <li class="menuItemCustom"><a href="#">About</a></li>
-              <li class="menuItemCustom"><a routerLink="/login" routerLinkActive="active" (click)="logOut()">Logout</a>
-              <li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+      <app-new-user-post></app-new-user-post>
+
+      <app-news-feed></app-news-feed>
+
+      <!-- End Middle Column -->
     </div>
-  </header>
+  <!-- End Page Container -->
 </div>
-<div>
-  <!--<div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="facebooklogo.jpg" alt="a post image">
-        <div class="caption">
-          <h3>This is a post!</h3>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>
-  </div>-->
-  <div>
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<br>
 
+<!-- Footer -->
+<footer class="w3-container w3-theme-d3 w3-padding-16">
+  <h5>Footer</h5>
+</footer>
+
+<footer class="w3-container w3-theme-d5">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
