@@ -46,7 +46,7 @@ export class UserService {
   }
 
   logOut(): void {
-    localStorage.removeItem('userID');
+    localStorage.removeItem('token');
     window.location.replace('/login');
   }
 

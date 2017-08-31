@@ -6,6 +6,7 @@ import {UserListComponent} from "./components/user-list/user-list.component"
 import {MyGuard} from "./guards/can-active.guard";
 import {ProfilePageComponent} from "./components/profile-page/profile-page.component";
 import {NewsFeedComponent} from "./components/news-feed/news-feed.component";
+import {NavBarComponent} from "./components/nav-bar/nav-bar.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/newsfeed', pathMatch: 'full'},
