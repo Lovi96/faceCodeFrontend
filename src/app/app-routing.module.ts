@@ -8,13 +8,13 @@ import {ProfilePageComponent} from "./components/profile-page/profile-page.compo
 import {NewsFeedComponent} from "./components/news-feed/news-feed.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/newsfeed', pathMatch: 'full'},
   {path: 'reg', component: RegPageComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'friends', component: UserListComponent},// canActivate: [MyGuard]},
+  {path: 'friends', component: UserListComponent, canActivate: [MyGuard]},
   {path: 'profile', component: ProfilePageComponent},
   {path: 'profile/:id', component: ProfilePageComponent},
-  {path: 'newsfeed', component: NewsFeedComponent}
+  {path: 'newsfeed', component: NewsFeedComponent, canActivate: [MyGuard]}
 ];
 
 @NgModule({

@@ -45,6 +45,9 @@ export class UserService {
     return +localStorage.getItem('userID');
   }
 
-
+  logOut(): void {
+    localStorage.removeItem('userID');
+    window.location.replace('/login');
+  }
 
 }

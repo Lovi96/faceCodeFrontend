@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {NewsFeedPost} from "../../classes/NewsfeedPost";
 import {NewsfeedService} from "../../services/newsfeed.service";
+import {Result} from "../../classes/Result";
 
 @Component({
   selector: 'app-new-newsfeed-post',
@@ -9,6 +10,7 @@ import {NewsfeedService} from "../../services/newsfeed.service";
 })
 export class NewNewsfeedPostComponent implements OnInit {
 
+  @Input() postList: NewsFeedPost[];
   @Input() post: NewsFeedPost;
   fileInputId = 'newPost';
 
@@ -22,7 +24,9 @@ export class NewNewsfeedPostComponent implements OnInit {
   }
 
   save(): void {
-    this.service.newPost(this.post, this.fileInputId).subscribe();
+    this.service.newPost(this.post, this.fileInputId).subscribe(result => {
+      window.location.reload();
+    });
   }
 
   ready(): boolean {
