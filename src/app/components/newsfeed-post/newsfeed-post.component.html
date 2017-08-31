@@ -1,71 +1,17 @@
-<!--<div *ngIf="post" class="panel panel-info" style="max-width: 930px">-->
-  <!--<ng-container *ngIf="!onEdit; else editView">-->
-    <!--<ng-container [ngSwitch]="post.type">-->
-      <!--<div>-->
-        <!--<span style="float: left">{{userName}}</span>-->
-        <!--<span style="float: right">{{post.postedOn}}</span>-->
-      <!--</div>-->
-      <!--<div class="panel-body">-->
-        <!--<p style="text-align: center">{{post.title}}</p>-->
-        <!--<div *ngSwitchCase="'TEXT'">-->
-          <!--<p>{{post.content}}</p>-->
-        <!--</div>-->
-
-        <!--<div *ngSwitchCase="'IMAGE'">-->
-          <!--<img style="width: 70%; max-width: 1000px" src="{{post.content}}">-->
-        <!--</div>-->
-
-        <!--<div *ngSwitchCase="'VIDEO'">-->
-          <!--<video style="width: 70%; max-width: 1000px" controls src="{{post.content}}"></video>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</ng-container>-->
-    <!--<button *ngIf="editable" (click)="edit()">Edit</button>-->
-  <!--</ng-container>-->
-  <!--<ng-template #editView>-->
-
-    <!--<ng-container [ngSwitch]="post.type" align="center">-->
-
-      <!--<input [(ngModel)]="post.title">-->
-
-      <!--<div class="panel-body">-->
-
-        <!--<div *ngSwitchCase="'TEXT'">-->
-          <!--<input [(ngModel)]="post.content">-->
-        <!--</div>-->
-
-        <!--<div *ngSwitchCase="'IMAGE'">-->
-          <!--<input id="{{index}}" type="file" accept="image/*">-->
-        <!--</div>-->
-
-        <!--<div *ngSwitchCase="'VIDEO'">-->
-          <!--<input id="{{index}}" type="file" accept="video/*">-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</ng-container>-->
-    <!--<button (click)="cancel()">Cancel</button>-->
-  <!--</ng-template>-->
-<!--</div>-->
-
-
-<!--kép-->
 <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-  <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-  <span class="w3-right w3-opacity">32 min</span>
-  <h4>Angie Jane</h4><br>
+  <img src="/w3images/avatar6.png" alt="leendő profilkép" class="w3-left w3-circle w3-margin-right" style="width:60px">
+  <span class="w3-right w3-opacity">{{post.postedOn}}</span>
+  <h4>{{userName}}</h4><br>
   <hr class="w3-clear">
-  <p>Have you seen this?</p>
-  <img src="./assets//bg2.jpg" style="width:100%" class="w3-margin-bottom">
+  <p>{{post.title}}</p>
+  <ng-container [ngSwitch]="post.type">
 
-</div>
-<!--szöveg-->
+    <p *ngSwitchCase="'TEXT'">{{post.content}}</p>
 
-<div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-  <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-  <span class="w3-right w3-opacity">16 min</span>
-  <h4>Jane Doe</h4><br>
-  <hr class="w3-clear">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat.</p>
+    <img *ngSwitchCase="'IMAGE'" src="{{post.content}}" style="width:100%" class="w3-margin-bottom">
+
+    <video *ngSwitchCase="'VIDEO'" style="width: 70%; max-width: 1000px" controls src="{{post.content}}"></video>
+
+  </ng-container>
+
 </div>
