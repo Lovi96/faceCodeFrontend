@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   feedbackMessage: string;
 
-  constructor(private http: Http, private userService: UserService, private router: Router,private guard: MyGuard) {
+  constructor(private http: Http, private userService: UserService, private router: Router, private guard: MyGuard) {
   }
 
   ngOnInit(): void {
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         }
       }
       if (x.payload) {
+        this.removeWallpaper();
         this.setToken(x.payload.token);
         this.setUserId(x.payload.userID);
         this.feedbackMessage = 'Logged in successfully';
@@ -69,6 +70,10 @@ export class LoginComponent implements OnInit {
       var randomBg = bgs[Math.floor((Math.random() * bgs.length))];
       document.body.style.backgroundImage = "url(./assets/" + randomBg + ")";
     }
+  }
+
+  removeWallpaper(): void {
+    document.body.style.backgroundImage = '';
   }
 
 
