@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'friends', component: UserListComponent, canActivate: [MyGuard]},
   {path: 'profile', component: ProfilePageComponent},
   {path: 'profile/:id', component: ProfilePageComponent},
-  {path: 'newsfeed', component: NewsFeedComponent, canActivate: [MyGuard]}
+  {path: 'newsfeed', component: NewsFeedComponent}
 ];
 
 @NgModule({

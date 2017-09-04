@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
 
   feedbackMessage: string;
 
-  constructor(private myGuard: MyGuard, private http: Http, private userService: UserService, private router: Router) {
+  constructor(private http: Http, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
-    const token = this.myGuard.getToken();
-    if (token != null) {
-      this.router.navigate(['/profile']);
+    this.setRandomWallpaper();
+    if (this.userService.tokenVerify()) {
+      this.router.navigate(['/newsfeed']);
     }
   }
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.setUserId(x.payload.userID);
         this.feedbackMessage = 'Logged in successfully';
 
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/newsfeed']);
       }
     })
   }
@@ -60,6 +60,16 @@ export class LoginComponent implements OnInit {
 
   setUserId(userId: number): void {
     localStorage.setItem('userID', userId.toString());
+  }
+
+  setRandomWallpaper(): void {
+    var locationArray = window.location.href.split('/');
+    console.log(locationArray[locationArray.length - 1]);
+    if (locationArray[locationArray.length - 1] === "login") {
+      var bgs = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
+      var randomBg = bgs[Math.floor((Math.random() * bgs.length))];
+      document.body.style.backgroundImage = "url(./assets/" + randomBg + ")";
+    }
   }
 
 

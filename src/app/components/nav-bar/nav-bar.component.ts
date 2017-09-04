@@ -9,7 +9,7 @@ import {MyGuard} from "../../guards/can-active.guard";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public userService: UserService, public guard: MyGuard) {
+  constructor(public userService: UserService) {
   }
 
   ngOnInit() {

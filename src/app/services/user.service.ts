@@ -25,6 +25,7 @@ export class UserService {
     return this.http.post(this.registerURL, user)
       .map((response: Response) => response.json());
   }
+
   updateUserData(user: User): Observable<Result> {
     return this.http.post(this.updateURL, user)
       .map((response: Response) => response.json());
@@ -48,6 +49,21 @@ export class UserService {
   logOut(): void {
     localStorage.removeItem('token');
     window.location.replace('/login');
+  }
+
+  tokenVerify(): boolean {
+    const token = this.getToken();
+    if (!token) {
+      return false
+    }
+    this.http.post(environment.baseUrl + '/account/tokencheck', token)
+      .map((response: Response) => response.json().status).subscribe(result => {
+      return result
+    });
+  }
+
+  getToken(): String {
+    return localStorage.getItem('token');
   }
 
 }

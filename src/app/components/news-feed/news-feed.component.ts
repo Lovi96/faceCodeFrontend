@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NewsfeedService} from '../../services/newsfeed.service';
 import {NewsFeedPost} from '../../classes/NewsfeedPost';
 import {UserService} from "../../services/user.service";
-import {forEach} from "@angular/router/src/utils/collection";
-import {NewsFeedType} from "../../classes/NewsFeedType";
-import {ShareLevel} from "../../classes/ShareLevel";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-news-feed',
@@ -16,10 +14,14 @@ export class NewsFeedComponent implements OnInit {
   posts: NewsFeedPost[];
   userID: number;
 
-  constructor(private newsFeedService: NewsfeedService, private userService: UserService) {
+  constructor(private newsFeedService: NewsfeedService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
+    if (!this.userService.tokenVerify()) {
+      this.router.navigate(['/login']);
+    }
+
     this.newsFeedService.getFeed().subscribe(result => {
       let posts = result.payload as NewsFeedPost[];
       let postArray = new Array();
