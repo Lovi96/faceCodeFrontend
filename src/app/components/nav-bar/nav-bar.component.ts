@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {GlobalEventsManager} from '../../services/global-events-manager.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,7 @@ export class NavBarComponent implements OnInit {
   public showNavBar = true;
 
 
-  constructor(public userService: UserService, public globalEventsManager: GlobalEventsManager) {
+  constructor(public userService: UserService, public globalEventsManager: GlobalEventsManager, private router: Router) {
 
     this.globalEventsManager.showNavBarEmitter.subscribe((mode) => {
       if (mode !== null) {
@@ -27,6 +28,7 @@ export class NavBarComponent implements OnInit {
   logOut() {
     this.globalEventsManager.showNavBar(false);
     this.userService.logOut();
+    this.router.navigate(['login'])
   }
 
 }

@@ -48,9 +48,10 @@ export class UserService {
   }
 
   logOut(): void {
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
+    localStorage.clear();
     this.globalEventsManager.showNavBar(false);
-    window.location.replace('/login');
+    // window.location.replace('/login');
   }
 
 
