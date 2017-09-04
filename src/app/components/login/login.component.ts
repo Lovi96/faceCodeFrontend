@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit {
 
   feedbackMessage: string;
 
-  constructor(private http: Http, private userService: UserService, private router: Router) {
+  constructor(private http: Http, private userService: UserService, private router: Router,private guard: MyGuard) {
   }
 
   ngOnInit(): void {
     this.setRandomWallpaper();
-    if (this.userService.tokenVerify()) {
+    if (this.guard.canActivate()) {
       this.router.navigate(['/newsfeed']);
     }
   }
@@ -44,15 +44,14 @@ export class LoginComponent implements OnInit {
         }
       }
       if (x.payload) {
-
         this.setToken(x.payload.token);
         this.setUserId(x.payload.userID);
         this.feedbackMessage = 'Logged in successfully';
-
         this.router.navigate(['/newsfeed']);
       }
     })
   }
+
 
   setToken(token: number): void {
     localStorage.setItem('token', token.toString());

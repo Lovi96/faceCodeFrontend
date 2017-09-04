@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NewsfeedService} from '../../services/newsfeed.service';
 import {NewsFeedPost} from '../../classes/NewsfeedPost';
-import {UserService} from "../../services/user.service";
+import {UserService} from '../../services/user.service';
 import {Router} from "@angular/router";
+import {MyGuard} from "../../guards/can-active.guard";
 
 @Component({
   selector: 'app-news-feed',
@@ -14,14 +15,14 @@ export class NewsFeedComponent implements OnInit {
   posts: NewsFeedPost[];
   userID: number;
 
-  constructor(private newsFeedService: NewsfeedService, private userService: UserService, private router: Router) {
+  constructor(private newsFeedService: NewsfeedService, private userService: UserService, private router: Router, private guard: MyGuard) {
   }
 
   ngOnInit() {
-    // if (!this.userService.tokenVerify()) {
-    //   console.log("belép");
-    //   this.router.navigate(['/login']);
-    // }
+    if (!this.guard.canActivate()) {
+      console.log("belép");
+      this.router.navigate(['/login']);
+    }
 
     this.newsFeedService.getFeed().subscribe(result => {
       let posts = result.payload as NewsFeedPost[];

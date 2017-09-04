@@ -51,19 +51,6 @@ export class UserService {
     window.location.replace('/login');
   }
 
-  tokenVerify(): boolean {
-    const token = this.getToken();
-    if (!token) {
-      return false
-    }
-    this.http.post(environment.baseUrl + '/account/tokencheck', token)
-      .map((response: Response) => response.json().status).subscribe(result => {
-      return result
-    });
-  }
 
-  getToken(): String {
-    return localStorage.getItem('token');
-  }
 
 }

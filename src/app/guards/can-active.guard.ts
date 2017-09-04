@@ -1,16 +1,27 @@
 import {Injectable} from '@angular/core';
-import {CanActivate} from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {UserService} from '../services/user.service';
+import {Http} from '@angular/http';
+import {environment} from '../../environments/environment';
+import {Response} from '@angular/http';
 
 
 @Injectable()
 export class MyGuard implements CanActivate {
 
-  constructor(private userService: UserService) {
+  constructor(private http: Http) {
+  }
+
+  getToken(): String {
+    return localStorage.getItem('token');
   }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    return this.userService.tokenVerify();
+    const token = this.getToken();
+    if (!token) {
+      return false
+    }
+    return this.http.post(environment.baseUrl + '/account/tokencheck', token)
+      .map((response: Response) => response.json().status);
   }
 }
