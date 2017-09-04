@@ -1,3 +1,29 @@
+<div class="w3-cell w3-cell-top w3-card-4 w3-round-small w3-container" style="color: #324148">
+  <h2>{{user.firstName}} {{user.lastName}}</h2>
+  <img src="{{imageURL}}/{{id}}" alt="Car" style="width:100%">
+  <div class="w3-display-container w3-padding w3-center" style="height:200px; width: 80%" align="center">
+
+    <div class="w3-display-left" style="border-right: thick solid #9c9c9c;">
+      <ul class="w3-ul">
+        <li>Age</li>
+        <li>City</li>
+        <li>DOB</li>
+      </ul>
+
+    </div>
+    <div class="w3-display-middle">
+      <ul class="w3-ul">
+        <li>999</li>
+        <li>Onga</li>
+        <li>keke</li>
+      </ul>
+    </div>
+
+
+  </div>
+</div>
+
+
 <div *ngIf="user">
   <div style="max-width:550px;" class="container containerColor" align="center">
     <app-relationship-button [user]="user"></app-relationship-button>
@@ -84,12 +110,13 @@
 
 
   </div>
-    <div align="center" style="padding: 30px" *ngFor="let post of posts">
-      <app-profile-page-post [post]="post"></app-profile-page-post>
-    </div>
-    <br>
-    <div *ngIf="user.id == userService.getLoggedInUserId()" align="center">
+  <div align="center" style="padding: 30px" *ngFor="let post of posts">
+    <app-profile-page-post [post]="post"></app-profile-page-post>
+  </div>
+  <br>
+  <div *ngIf="user.id == userService.getLoggedInUserId()" align="center">
 
-      <app-new-user-post></app-new-user-post>
-    </div>
+    <app-new-user-post></app-new-user-post>
+  </div>
 </div>
+
