@@ -9,6 +9,7 @@ import {LoginCredentials} from '../classes/login-cred';
 import {HttpWrapper} from './http-wrapper.service';
 
 import {environment} from '../../environments/environment'
+import {GlobalEventsManager} from "./global-events-manager.service";
 
 @Injectable()
 export class UserService {
@@ -18,7 +19,7 @@ export class UserService {
   singleUser = environment.baseUrl + '/account/getuser/';
   updateURL = environment.baseUrl + '/account/edit';
 
-  constructor(private http: HttpWrapper) {
+  constructor(private http: HttpWrapper, private globalEventsManager: GlobalEventsManager) {
   }
 
   postUserData(user: User): Observable<Result> {
@@ -48,6 +49,7 @@ export class UserService {
 
   logOut(): void {
     localStorage.removeItem('token');
+    this.globalEventsManager.showNavBar(false);
     window.location.replace('/login');
   }
 

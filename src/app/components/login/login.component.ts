@@ -6,6 +6,7 @@ import {FCException} from '../../classes/FCException'
 import {Http} from '@angular/http';
 import {Router} from "@angular/router";
 import {MyGuard} from "../../guards/can-active.guard";
+import {GlobalEventsManager} from "../../services/global-events-manager.service";
 
 @Component({
   selector: 'app-login',
@@ -21,17 +22,21 @@ export class LoginComponent implements OnInit {
 
   feedbackMessage: string;
 
-  constructor(private http: Http, private userService: UserService, private router: Router, private guard: MyGuard) {
+  constructor(private http: Http, private userService: UserService, private router: Router,
+              private guard: MyGuard, public globalEventsManager: GlobalEventsManager) {
   }
 
   ngOnInit(): void {
     this.setRandomWallpaper();
+    this.globalEventsManager.showNavBar(false);
     if (this.guard.canActivate()) {
-      this.router.navigate(['/newsfeed']);
+      console.log("beenged");
+      this.forwardToNewsfeed();
     }
   }
 
   logIn() {
+    this.globalEventsManager.showNavBar(false);
     this.loginCredentail = new LoginCredentials(this.email, this.password);
     this.userService.logIn(this.loginCredentail).subscribe(x => {
       console.log(x);
@@ -44,15 +49,20 @@ export class LoginComponent implements OnInit {
         }
       }
       if (x.payload) {
-        this.removeWallpaper();
         this.setToken(x.payload.token);
         this.setUserId(x.payload.userID);
         this.feedbackMessage = 'Logged in successfully';
-        this.router.navigate(['/newsfeed']);
+        this.forwardToNewsfeed();
+
       }
     })
   }
 
+  forwardToNewsfeed(): void {
+    this.removeWallpaper();
+    this.globalEventsManager.showNavBar(true);
+    this.router.navigate(['/newsfeed']);
+  }
 
   setToken(token: number): void {
     localStorage.setItem('token', token.toString());

@@ -4,12 +4,13 @@ import {Observable} from 'rxjs/Observable';
 import {Http} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Response} from '@angular/http';
+import {HttpWrapper} from "../services/http-wrapper.service";
 
 
 @Injectable()
 export class MyGuard implements CanActivate {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpWrapper) {
   }
 
   getToken(): String {

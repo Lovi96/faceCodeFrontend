@@ -19,10 +19,11 @@ import {ImageService} from "./services/image.service";
 import {NewUserPostComponent} from './components/new-user-post/new-user-post.component';
 import {NewsFeedPostComponent} from './components/newsfeed-post/newsfeed-post.component';
 import {NewsfeedService} from "./services/newsfeed.service";
-import { NewsFeedComponent } from './components/news-feed/news-feed.component';
-import { RelationshipButtonComponent } from './components/relationship-button/relationship-button.component';
-import { NewNewsfeedPostComponent } from './components/new-newsfeed-post/new-newsfeed-post.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import {NewsFeedComponent} from './components/news-feed/news-feed.component';
+import {RelationshipButtonComponent} from './components/relationship-button/relationship-button.component';
+import {NewNewsfeedPostComponent} from './components/new-newsfeed-post/new-newsfeed-post.component';
+import {NavBarComponent} from './components/nav-bar/nav-bar.component';
+import {GlobalEventsManager} from "./services/global-events-manager.service";
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MyGuard,
     ProfilePagePostService,
     ImageService,
-    NewsfeedService],
+    NewsfeedService,
+    GlobalEventsManager],
   bootstrap: [AppComponent]
 })
 export class AppModule {
