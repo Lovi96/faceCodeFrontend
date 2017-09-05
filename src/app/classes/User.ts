@@ -14,7 +14,7 @@ export class User {
   constructor(payload: any) {
     this.email = payload.email;
     this.password = payload.password;
-    this.birthDate = payload.yearOfBirth;
+    this.birthDate = payload.birthDate;
     this.gender = payload.gender;
     this.firstName = payload.firstName;
     this.lastName = payload.lastName;

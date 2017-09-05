@@ -1,122 +1,208 @@
-<div class="w3-cell w3-cell-top w3-card-4 w3-round-small w3-container" style="color: #324148">
-  <h2>{{user.firstName}} {{user.lastName}}</h2>
-  <img src="{{imageURL}}/{{id}}" alt="Car" style="width:100%">
-  <div class="w3-display-container w3-padding w3-center" style="height:200px; width: 80%" align="center">
-
-    <div class="w3-display-left" style="border-right: thick solid #9c9c9c;">
-      <ul class="w3-ul">
-        <li>Age</li>
-        <li>City</li>
-        <li>DOB</li>
-      </ul>
-
-    </div>
-    <div class="w3-display-middle">
-      <ul class="w3-ul">
-        <li>999</li>
-        <li>Onga</li>
-        <li>keke</li>
-      </ul>
-    </div>
+<ng-container>
+  <div class="w3-cell w3-cell-top w3-card-4 w3-round-small w3-container" style="color: #324148">
 
 
-  </div>
-</div>
+    <ng-container [ngSwitch]="onEdit">
+      <ng-container *ngSwitchCase="false">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+      </ng-container>
+      <ng-container *ngSwitchCase="true">
+        <h2 style="display: flex;">
+          <input [(ngModel)]="user.firstName" class="w3-input" style="display: inline-block">
+          <input [(ngModel)]="user.lastName" class="w3-input" style="display: inline-block">
+        </h2>
+      </ng-container>
+    </ng-container>
+
+    <ng-container [ngSwitch]="onImageUpload">
+
+      <ng-container *ngSwitchCase="false">
+          <div style="position: relative" class="w3-right">
+            <button class="w3-button w3-theme-l1" (click)="onImageUpload = true">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </div>
+          <img src="{{imageURL}}/{{id}}" style="width:100%; margin-top: -40px">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="true">
+        <p style="position: relative;top: 50px;right: 16px" class="w3-right">
+          <button class="w3-button w3-theme-l1" (click)="onImageUpload = false">
+            <i class="fa fa-undo" aria-hidden="true"></i>
+          </button>
+        </p>
+
+        <input type="file" class="btn-default" id="image" accept="image/*">
+        <button class="w3-button w3-theme" (click)="uploadImage()">Upload</button>
+
+      </ng-container>
+
+    </ng-container>
 
 
-<div *ngIf="user">
-  <div style="max-width:550px;" class="container containerColor" align="center">
-    <app-relationship-button [user]="user"></app-relationship-button>
+    <div class="w3-display-container w3-padding w3-center li-height"
+         style="width: 100%; min-width: 591px; padding: 0; margin: 0" [ngStyle]="{'height.px':onEdit?380:250}">
 
-    <img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">
-
-    <div *ngIf="imageIsUpdated" ngIfThen="this.handleImageUpdate()">
-    </div>
-
-    <div *ngIf="user.id == userService.getLoggedInUserId()">
-      <input type="file" class="btn-default" id="image">
-      <button class="btn btn-default" (click)="uploadImage()">Upload</button>
-    </div>
-
-    <div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px;text-align: center"
-         class="containerColor" align="center">
-      <div style="alignment: center" align="center">
-        <p *ngIf="feedbackMessage">{{feedbackMessage}}</p>
-        <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
-          <li>
-            <div class="input-group">
-              <input id="pw" class="form-control" type="password" [(ngModel)]="user.password"
-                     placeholder="Password*"><span
-              class="input-group-addon">*</span>
-            </div>
-          </li>
-          <li>
-            <div class="input-group">
-              <input id="pwagain" class="form-control" type="password" [(ngModel)]="pwAgain"
-                     placeholder="Password again*"><span class="input-group-addon">*</span>
-            </div>
-          </li>
-          <li>
-            <div class="input-group">
-              <input id="birthDate" class="form-control" name="firstName" type="number" [(ngModel)]="user.birthDate"
-                     placeholder="Year of birth*"><span class="input-group-addon">*</span>
-            </div>
-          </li>
+      <div class="w3-display-left w3-center"
+           style="border-right: solid #9eb1bb; opacity: 0.3; padding-left: 20px">
+        <ul class="w3-ul" style=" text-align: left">
+          <li><p>Email address</p></li>
+          <li><p>Birth year</p></li>
+          <li><p>lakhely</p></li>
+          <li><p>Phone</p></li>
+          <ng-container *ngIf="onEdit">
+            <li><p>Password</p></li>
+            <li><p>Password again</p></li>
+          </ng-container>
         </ul>
 
-        <input id="firstName" style="max-width: 350px" class="form-control" name="firstName"
-               [(ngModel)]="user.firstName"
-               placeholder="First Name">
-        <input id="lastName" style="max-width: 350px" class="form-control" name="lastName" [(ngModel)]="user.lastName"
-               placeholder="Last Name">
-
-        <input id="address" style="max-width: 350px" class="form-control" name="address" [(ngModel)]="user.address"
-               placeholder="Address">
-        <input id="city" style="max-width: 350px" class="form-control" name="city" [(ngModel)]="user.city"
-               placeholder="City">
-
-        <input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="user.phone"
-               placeholder="Phone Number">
-
-        <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-default" (click)="save()">
-          Save
-        </button>
-        <br>
-        <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-default" (click)="revert()">
-          Cancel
-        </button>
       </div>
+      <ng-container [ngSwitch]="onEdit">
+
+        <ng-container *ngSwitchCase="false">
+          <div class="w3-display-middle" style=" text-align: left">
+            <ul class="w3-ul">
+              <li><p>{{user.email}}</p></li>
+              <li><p>{{user.birthDate}}</p></li>
+              <li><p>{{user.address}} {{user.city}}</p></li>
+              <li><p>{{user.phone}}</p></li>
+            </ul>
+          </div>
+
+          <div class="w3-display-topright w3-margin">
+            <button class="w3-button w3-theme-l1" (click)="edit()"><i class="fa fa-pencil"></i></button>
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="true">
+
+          <div class="w3-display-middle" style=" text-align: left">
+            <ul class="w3-ul">
+              <li><input [(ngModel)]="user.email" class="w3-input" disabled></li>
+              <li><input [(ngModel)]="user.birthDate" class="w3-input"></li>
+              <li style="display: flex;">
+                <input [(ngModel)]="user.address" class="w3-input" style="display: inline-block">
+                <input [(ngModel)]="user.city" class="w3-input" style="display: inline-block">
+              </li>
+              <li><input [(ngModel)]="user.phone" class="w3-input"></li>
+              <li><input [(ngModel)]="user.password" class="w3-input" type="password"
+                         placeholder="Enter your password to save the changes"></li>
+              <li><input [(ngModel)]="pwAgain" class="w3-input" type="password"></li>
+
+            </ul>
+          </div>
+
+          <div class="w3-display-topright w3-margin">
+            <button class="w3-button w3-theme-l1" (click)="save()">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+            <button class="w3-button w3-theme-l1" (click)="revert()">
+              <i class="fa fa-undo" aria-hidden="true"></i>
+            </button>
+          </div>
+
+        </ng-container>
+
+      </ng-container>
+      <p *ngIf="onEdit">{{feedbackMessage}}</p>
     </div>
-
-    <ng-template #noEdit>
-      <div style="alignment: center" align="center" *ngIf="user">
-        <div style="font-size: 20px;font-style: oblique">
-          {{user.firstName}} {{user.lastName}}
-        </div>
-        <hr>
-        <br>
-        E-mail and DoB:
-        <div>{{user.email}} {{user.birthDate}}</div>
-        <br>
-        Address and City:
-        <div>{{user.address}} {{user.city}}</div>
-        <br>
-        Phone number:
-        {{user.phone}}
-        <button *ngIf="user.id == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">Edit
-        </button>
-      </div>
-    </ng-template>
-
-
   </div>
-  <div align="center" style="padding: 30px" *ngFor="let post of posts">
-    <app-profile-page-post [post]="post"></app-profile-page-post>
-  </div>
-  <br>
-  <div *ngIf="user.id == userService.getLoggedInUserId()" align="center">
+</ng-container>
 
-    <app-new-user-post></app-new-user-post>
-  </div>
-</div>
+<!--<div *ngIf="user">-->
+<!--<div style="max-width:550px;" class="container containerColor" align="center">-->
+<!--<app-relationship-button [user]="user"></app-relationship-button>-->
+
+<!--<img width="500" style="padding-top: 50px" src="{{imageURL}}/{{id}}">-->
+
+<!--<div *ngIf="imageIsUpdated" ngIfThen="this.handleImageUpdate()">-->
+<!--</div>-->
+
+<!--<div *ngIf="user.id == userService.getLoggedInUserId()">-->
+<!--<input type="file" class="btn-default" id="image">-->
+<!--<button class="btn btn-default" (click)="uploadImage()">Upload</button>-->
+<!--</div>-->
+
+<!--<div *ngIf="onEdit; else noEdit" style="max-width: 400px; min-width: 175px; margin-bottom:25px;text-align: center"-->
+<!--class="containerColor" align="center">-->
+<!--<div style="alignment: center" align="center">-->
+<!--<p *ngIf="feedbackMessage">{{feedbackMessage}}</p>-->
+<!--<ul style="max-width: 425px;list-style-type:none;margin-right: 25px">-->
+<!--<li>-->
+<!--<div class="input-group">-->
+<!--<input id="pw" class="form-control" type="password" [(ngModel)]="user.password"-->
+<!--placeholder="Password*"><span-->
+<!--class="input-group-addon">*</span>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li>-->
+<!--<div class="input-group">-->
+<!--<input id="pwagain" class="form-control" type="password" [(ngModel)]="pwAgain"-->
+<!--placeholder="Password again*"><span class="input-group-addon">*</span>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li>-->
+<!--<div class="input-group">-->
+<!--<input id="birthDate" class="form-control" name="firstName" type="number" [(ngModel)]="user.birthDate"-->
+<!--placeholder="Year of birth*"><span class="input-group-addon">*</span>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+
+<!--<input id="firstName" style="max-width: 350px" class="form-control" name="firstName"-->
+<!--[(ngModel)]="user.firstName"-->
+<!--placeholder="First Name">-->
+<!--<input id="lastName" style="max-width: 350px" class="form-control" name="lastName" [(ngModel)]="user.lastName"-->
+<!--placeholder="Last Name">-->
+
+<!--<input id="address" style="max-width: 350px" class="form-control" name="address" [(ngModel)]="user.address"-->
+<!--placeholder="Address">-->
+<!--<input id="city" style="max-width: 350px" class="form-control" name="city" [(ngModel)]="user.city"-->
+<!--placeholder="City">-->
+
+<!--<input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="user.phone"-->
+<!--placeholder="Phone Number">-->
+
+<!--<button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-default" (click)="save()">-->
+<!--Save-->
+<!--</button>-->
+<!--<br>-->
+<!--<button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-default" (click)="revert()">-->
+<!--Cancel-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<ng-template #noEdit>-->
+<!--<div style="alignment: center" align="center" *ngIf="user">-->
+<!--<div style="font-size: 20px;font-style: oblique">-->
+<!--{{user.firstName}} {{user.lastName}}-->
+<!--</div>-->
+<!--<hr>-->
+<!--<br>-->
+<!--E-mail and DoB:-->
+<!--<div>{{user.email}} {{user.birthDate}}</div>-->
+<!--<br>-->
+<!--Address and City:-->
+<!--<div>{{user.address}} {{user.city}}</div>-->
+<!--<br>-->
+<!--Phone number:-->
+<!--{{user.phone}}-->
+<!--<button *ngIf="user.id == userService.getLoggedInUserId()" class="btn btn-default" (click)="edit()">Edit-->
+<!--</button>-->
+<!--</div>-->
+<!--</ng-template>-->
+
+
+<!--</div>-->
+<!--<div align="center" style="padding: 30px" *ngFor="let post of posts">-->
+<!--<app-profile-page-post [post]="post"></app-profile-page-post>-->
+<!--</div>-->
+<!--<br>-->
+<!--<div *ngIf="user.id == userService.getLoggedInUserId()" align="center">-->
+
+<!--<app-new-user-post></app-new-user-post>-->
+<!--</div>-->
+<!--</div>-->
 

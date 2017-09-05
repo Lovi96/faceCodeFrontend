@@ -1739,3 +1739,7 @@ a {
 .dropdown-in-front{
   z-index: 1;
 }
+
+.li-height li{
+  max-height: 50px;
+}
