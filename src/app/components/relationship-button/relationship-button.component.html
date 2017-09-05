@@ -6,6 +6,19 @@
     <button *ngIf="(relation.status == 0) && (relation.actionUserID != userService.getLoggedInUserId())" (click)="createRelationship(1)">Accept request</button>
     <button *ngIf="relation.status == 1">You are friends!</button>
     <button *ngIf="relation.status == 1" (click)="createRelationship(3)" >Remove friend</button>
-    <button *ngIf="relation.status != 2" (click)="createRelationship(2)" >Block user</button>
+    <button *ngIf="relation.status != 2" (click)="createRelationship(2)" style="background-color: black"><i class="fa fa-ban" style="color: white"></i></button>
+    <div class="w3-row w3-opacity">
+      <div class="w3-third" ngClass="">
+        <button *ngIf="relation.status == -1" (click)="createRelationship(0)" class="w3-button w3-block w3-green w3-section" title="Add"><i class="fa fa-user-plus"></i></button>
+        <button *ngIf="(relation.status == 0) && (relation.actionUserID == userService.getLoggedInUserId())" class="w3-button w3-block w3-blue w3-section" title="Pending" disabled><i class="fa fa-spinner"></i></button>
+        <button *ngIf="(relation.status == 0) && (relation.actionUserID != userService.getLoggedInUserId())" (click)="createRelationship(1)" class="w3-button w3-block w3-blue w3-section" title="Accept"><i class="fa fa-check"></i></button>
+      </div>
+      <div class="w3-third">
+        <button *ngIf="relation.status == -1" (click)="createRelationship(0)" class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+      </div>
+      <div class="w3-third">
+        <button class="w3-button w3-block w3-black w3-section" title="Block"><i class="fa fa-ban"></i></button>
+      </div>
+    </div>
   </div>
 </div>
