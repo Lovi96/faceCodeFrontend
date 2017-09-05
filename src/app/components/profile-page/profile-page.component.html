@@ -1,6 +1,5 @@
-<ng-container>
+<ng-container *ngIf="user">
   <div class="w3-cell w3-cell-top w3-card-4 w3-round-small w3-container" style="color: #324148">
-
 
     <ng-container [ngSwitch]="onEdit">
       <ng-container *ngSwitchCase="false">
@@ -17,12 +16,12 @@
     <ng-container [ngSwitch]="onImageUpload">
 
       <ng-container *ngSwitchCase="false">
-          <div style="position: relative" class="w3-right">
-            <button class="w3-button w3-theme-l1" (click)="onImageUpload = true">
-              <i class="fa fa-pencil"></i>
-            </button>
-          </div>
-          <img src="{{imageURL}}/{{id}}" style="width:100%; margin-top: -40px">
+        <div style="position: relative" class="w3-right">
+          <button class="w3-button w3-theme-l1" (click)="onImageUpload = true">
+            <i class="fa fa-pencil"></i>
+          </button>
+        </div>
+        <img src="{{imageURL}}/{{id}}" style="width:100%; margin-top: -40px">
       </ng-container>
 
       <ng-container *ngSwitchCase="true">
@@ -48,7 +47,7 @@
         <ul class="w3-ul" style=" text-align: left">
           <li><p>Email address</p></li>
           <li><p>Birth year</p></li>
-          <li><p>lakhely</p></li>
+          <li><p>Address</p></li>
           <li><p>Phone</p></li>
           <ng-container *ngIf="onEdit">
             <li><p>Password</p></li>
@@ -108,7 +107,6 @@
       <p *ngIf="onEdit">{{feedbackMessage}}</p>
     </div>
   </div>
-</ng-container>
 
 <!--<div *ngIf="user">-->
 <!--<div style="max-width:550px;" class="container containerColor" align="center">-->
@@ -196,13 +194,14 @@
 
 
 <!--</div>-->
-<!--<div align="center" style="padding: 30px" *ngFor="let post of posts">-->
-<!--<app-profile-page-post [post]="post"></app-profile-page-post>-->
-<!--</div>-->
-<!--<br>-->
-<!--<div *ngIf="user.id == userService.getLoggedInUserId()" align="center">-->
+<div align="center" style="padding: 30px" *ngFor="let post of posts">
+  <app-profile-page-post [post]="post"></app-profile-page-post>
+</div>
+<br>
+<div *ngIf="user.id == userService.getLoggedInUserId()" align="center">
 
-<!--<app-new-user-post></app-new-user-post>-->
-<!--</div>-->
+  <app-new-user-post></app-new-user-post>
+</div>
 <!--</div>-->
 
+</ng-container>
