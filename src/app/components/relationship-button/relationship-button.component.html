@@ -10,7 +10,7 @@
     <button *ngIf="relation.status != 2" (click)="createRelationship(2)" style="background-color: black"><i class="fa fa-ban" style="color: white"></i></button>
   -->
 
-
+<!-- The relationship monstrosity-->
     <div class="w3-row w3-opacity" *ngIf="(relation.status == -1) && (user.id != userService.getLoggedInUserId())">
         <div class="w3-half">
           <button *ngIf="(relation.status == -1) && (user.id != userService.getLoggedInUserId())" (click)="createRelationship(0)" class="w3-button w3-block w3-green w3-section" title="Add"><i class="fa fa-user-plus"></i></button>
