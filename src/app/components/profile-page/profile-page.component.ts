@@ -20,10 +20,13 @@ export class ProfilePageComponent implements OnInit {
 
   user: User;
   posts: ProfilePagePost[];
+
   id: string;
-  onEdit: boolean;
+  onEdit: boolean = false;
   feedbackMessage: string;
   pwAgain: string;
+
+  onImageUpload: boolean = false;
 
   imageIsUpdated: boolean;
 
@@ -56,11 +59,13 @@ export class ProfilePageComponent implements OnInit {
 
   edit(): void {
     this.onEdit = true;
+    this.user.password = '';
   }
 
   revert(): void {
     this.onEdit = false;
     this.userService.getUser(+this.id).subscribe(user => this.user = user);
+    this.feedbackMessage = '';
   }
 
   save(): void {
@@ -74,6 +79,8 @@ export class ProfilePageComponent implements OnInit {
           this.userService.getUser(+this.id).subscribe(user => {
             this.user = user;
             this.user.password = '';
+            this.feedbackMessage = '';
+
           });
         }
         if (result.exception) {
