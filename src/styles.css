@@ -22,9 +22,9 @@
   -o-transform: scale(1.1);
 }
 .containerColor{
-  background: rgba(20, 152, 213, 0.81);
-  border-radius: 5px;
-  border: 10px #248e49;
+  background: #4D636F;
+  border-radius: 2px;
+  box-shadow: black 20px;
 }
 .loginPanel{
   animation: swimInAnim 2s;

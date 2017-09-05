@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.setRandomWallpaper();
     this.globalEventsManager.showNavBar(false);
-    if (this.guard.canActivate()) {
-      console.log("beenged");
-      this.forwardToNewsfeed();
-    }
+    // if (this.guard.canActivate()) {
+    //   console.log("beenged");
+    //   this.forwardToNewsfeed();
+    // }
   }
 
   logIn() {
@@ -74,7 +74,6 @@ export class LoginComponent implements OnInit {
 
   setRandomWallpaper(): void {
     var locationArray = window.location.href.split('/');
-    console.log(locationArray[locationArray.length - 1]);
     if (locationArray[locationArray.length - 1] === "login") {
       var bgs = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
       var randomBg = bgs[Math.floor((Math.random() * bgs.length))];
