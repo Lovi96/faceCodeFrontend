@@ -19,10 +19,10 @@ export class NewsFeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.guard.canActivate()) {
-      console.log("belép");
-      this.router.navigate(['/login']);
-    }
+    // if (!this.guard.canActivate()) {
+    //   console.log("belép");
+    //   this.router.navigate(['/login']);
+    // }
 
     this.newsFeedService.getFeed().subscribe(result => {
       let posts = result.payload as NewsFeedPost[];
