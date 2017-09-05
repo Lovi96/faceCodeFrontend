@@ -9,7 +9,6 @@ export class User {
   city: string;
   phone: string;
   id: number;
-  private default : string = "Not specified";
 
   constructor(payload: any) {
     this.email = payload.email;
@@ -21,17 +20,17 @@ export class User {
     this.address = payload.address;
     if (this.address === null)
     {
-      this.address = this.default;
+      this.address = "Not specified";
     }
     this.city = payload.city;
     if (this.city === null)
     {
-      this.city = this.default;
+      this.city = "Not specified";
     }
     this.phone = payload.phone;
     if(this.phone === null)
     {
-      this.phone = this.default
+      this.phone = "Not specified";
     }
     this.id = payload.id;
   }
