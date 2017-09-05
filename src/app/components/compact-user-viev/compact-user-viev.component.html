@@ -1,9 +1,16 @@
-<div *ngIf="this.user" class="panel panel-info">
-  <div class="panel-heading">
-    <a routerLink="/profile/{{user.id}}">{{user.firstName}} {{user.lastName}}</a>
-  </div>
-  <div class="panel-body">
-    <p style="margin: 5px;">
-    Dob: {{user.birthDate}}, City of birth: {{user.city}}</p>
+<div *ngIf="this.user" class="w3-third w3-card-2 panel panel-info">
+  <div class="w3-row">
+    <div class="panel-heading">
+      <a routerLink="/profile/{{user.id}}">{{user.firstName}} {{user.lastName}}</a>
+      <div><img src="assets/facecodelogo.png" style="max-width: 100px;max-height: inherit" alt="Picture goes here">
+      </div>
+      </div>
+    <div class="panel-body">
+      <p style="margin: 5px;">
+      Dob: {{user.birthDate}}, City of birth: {{user.city}}</p>
+    </div>
+    <div>
+      <app-relationship-button [user]="user"></app-relationship-button>
+    </div>
   </div>
 </div>
