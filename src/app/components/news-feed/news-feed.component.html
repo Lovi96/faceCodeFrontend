@@ -6,7 +6,6 @@
 
     <div *ngFor="let post of posts;let i = index">
       <app-newsfeed-post [post]="post" [editable]="post.ownerID == userID" [index]="i"></app-newsfeed-post>
-      <br>
     </div>
   </div>
 <!--</div>-->

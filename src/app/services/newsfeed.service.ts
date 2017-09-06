@@ -13,6 +13,7 @@ export class NewsfeedService {
 
   private newsFeedURL: string = environment.baseUrl + '/newsfeed';
   private newPostURL: string = environment.baseUrl + '/newsfeed/new';
+  private deletePostURL: string = environment.baseUrl + '/newsfeed/delete/';
 
   constructor(private http: HttpWrapper, private userService: UserService) {
   }
@@ -30,5 +31,9 @@ export class NewsfeedService {
       formData.append('file', document.getElementById(fileInputId)['files'][0]);
     }
     return this.http.post(this.newPostURL, formData).map(res => res.json());
+  }
+
+  deletePost(postId: number): Observable<any> {
+    return this.http.get(this.deletePostURL + postId.toString());
   }
 }

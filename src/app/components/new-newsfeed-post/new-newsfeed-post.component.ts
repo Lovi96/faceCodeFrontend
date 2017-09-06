@@ -10,7 +10,6 @@ import {Result} from "../../classes/Result";
 })
 export class NewNewsfeedPostComponent implements OnInit {
 
-  @Input() postList: NewsFeedPost[];
   @Input() post: NewsFeedPost;
   fileInputId = 'newPost';
 

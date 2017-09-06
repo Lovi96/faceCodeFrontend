@@ -2,7 +2,7 @@
   <div class="w3-card-4 w3-theme-l5" style="max-width: 80%">
     <h2><input class="w3-input w3-theme-l3" style="resize: none;" [(ngModel)]="post.title" placeholder="Title"/></h2>
     <br>
-    <textarea  class="w3-input" [(ngModel)]="post.content" placeholder="Content"></textarea>
+    <textarea class="w3-input" [(ngModel)]="post.content" placeholder="Content"></textarea>
     <br>
     <button class="w3-button w3-theme" (click)="revert()">Cancel</button>
     <button class="w3-button w3-theme" (click)="save()">Save</button>
@@ -19,9 +19,16 @@
     <div class="w3-container">
       <p>{{post.content}}</p>
     </div>
-    <button *ngIf="post.ownerID == userService.getLoggedInUserId()" class="w3-button w3-theme-l5" (click)="edit()">
-      Edit
-    </button>
+    <div class="w3-container" style="padding: 0" *ngIf="post.ownerID == userService.getLoggedInUserId()">
+
+      <button class="w3-button w3-round-small w3-small w3-left w3-theme-l5" (click)="edit()">
+        Edit
+      </button>
+      <button (click)="deletePost()" style="margin-left: 20px" type="button"
+              class="w3-button w3-red w3-round-small w3-small w3-right">
+        <i class="fa fa-times"
+           aria-hidden="true"></i></button>
+    </div>
 
   </div>
 </ng-template>

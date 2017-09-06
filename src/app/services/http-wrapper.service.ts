@@ -25,4 +25,10 @@ export class   HttpWrapper {
     this.createAuthorizationHeader(headers);
     return this.http.post(url, data, {headers});
   }
+// valamié nemjó
+  // delete(url) {
+  //   const headers = new Headers();
+  //   this.createAuthorizationHeader(headers);
+  //   return this.http.delete(url, {headers});
+  // }
 }
