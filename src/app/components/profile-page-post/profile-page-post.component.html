@@ -22,7 +22,7 @@
     <div class="w3-container" style="padding: 0" *ngIf="post.ownerID == userService.getLoggedInUserId()">
 
       <button class="w3-button w3-round-small w3-small w3-left w3-theme-l5" (click)="edit()">
-        Edit
+        <i class="fa fa-pencil"></i>
       </button>
       <button (click)="deletePost()" style="margin-left: 20px" type="button"
               class="w3-button w3-red w3-round-small w3-small w3-right">
