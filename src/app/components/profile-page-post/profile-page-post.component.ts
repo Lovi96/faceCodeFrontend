@@ -43,4 +43,8 @@ export class ProfilePagePostComponent implements OnInit {
     this.service.getPost(this.post.id).subscribe(post => this.post);
   }
 
+  remove() {
+    this.service.deletePost(this.post.id).subscribe(result => this.post = null);
+  }
+
 }
