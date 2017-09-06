@@ -1,5 +1,6 @@
 <ng-container *ngIf="user">
-  <div class="w3-cell w3-cell-top w3-card-4 w3-round-small w3-container" style="color: #324148">
+  <div class="w3-cell w3-card-4 w3-round-small w3-container" style="color: #324148" align="left">
+    <app-relationship-button *ngIf="!editable" [user]="user"></app-relationship-button>
 
     <!--NAME-->
     <ng-container [ngSwitch]="onEdit">
@@ -18,12 +19,16 @@
     <ng-container [ngSwitch]="onImageUpload">
 
       <ng-container *ngSwitchCase="false">
-        <div *ngIf="editable" style="position: relative" class="w3-right">
-          <button class="w3-button w3-theme-l1" (click)="onImageUpload = true">
-            <i class="fa fa-pencil"></i>
-          </button>
+        <div style="width: 100%">
+          <div *ngIf="editable" align="right">
+            <button class="w3-button w3-theme-l1" (click)="onImageUpload = true">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </div>
+          <img src="{{imageURL}}/{{id}}"
+               style="width: auto; height: auto; max-height: 700px; max-width: 800px"
+               align="center" [ngStyle]="{'margin-top: -40px': editable}">
         </div>
-        <img src="{{imageURL}}/{{id}}" style="width:100%; margin-top: -40px">
       </ng-container>
 
       <ng-container *ngSwitchCase="true">

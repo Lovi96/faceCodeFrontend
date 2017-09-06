@@ -25,7 +25,7 @@ export class ProfilePageComponent implements OnInit {
   onEdit: boolean = false;
   feedbackMessage: string;
   pwAgain: string;
-  editable: boolean;
+  editable: boolean = false;
 
 
   onImageUpload: boolean = false;
@@ -57,6 +57,7 @@ export class ProfilePageComponent implements OnInit {
       this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
     });
   this.editable = this.id === this.userService.getLoggedInUserId().toString();
+  console.log(this.editable);
 
   }
 
