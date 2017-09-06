@@ -19,6 +19,7 @@ export class ProfilePagePostComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   edit() {

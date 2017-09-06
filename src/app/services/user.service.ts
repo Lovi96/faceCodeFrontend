@@ -28,6 +28,7 @@ export class UserService {
   }
 
   updateUserData(user: User): Observable<Result> {
+    console.log("user a serviceben", user.lastName);
     return this.http.post(this.updateURL, user)
       .map((response: Response) => response.json());
   }

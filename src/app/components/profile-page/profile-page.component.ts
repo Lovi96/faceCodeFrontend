@@ -25,10 +25,11 @@ export class ProfilePageComponent implements OnInit {
   onEdit: boolean = false;
   feedbackMessage: string;
   pwAgain: string;
+  editable: boolean;
+
 
   onImageUpload: boolean = false;
 
-  imageIsUpdated: boolean;
 
   imageURL = environment.baseUrl + '/media/profileimage';
 
@@ -43,18 +44,20 @@ export class ProfilePageComponent implements OnInit {
 
     this.route.paramMap
       .switchMap((params: ParamMap) => this.id = params.get('id') == null ? this.userService.getLoggedInUserId()
-        .toString() : params.get('id')).subscribe();
+        .toString() : params.get('id')).subscribe(result => {
+      this.userService.getUser(+this.id)
+        .subscribe(user => {
+          this.user = user;
+          this.user.password = '';
+          this.imageURL.concat('/', this.id);
+          console.log(this.user);
+          console.log(this.user.getFullName());
+        });
 
-    this.userService.getUser(+this.id)
-      .subscribe(user => {
-        this.user = user;
-        this.user.password = '';
-        this.imageURL.concat('/', this.id);
-        console.log(this.user);
-        console.log(this.user.getFullName());
-      });
+      this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
+    });
+  this.editable = this.id === this.userService.getLoggedInUserId().toString();
 
-    this.profilePagePostService.getPosts(+this.id).subscribe(posts => this.posts = posts);
   }
 
   edit(): void {
@@ -70,10 +73,11 @@ export class ProfilePageComponent implements OnInit {
 
   save(): void {
     if (this.user.password !== this.pwAgain) {
-      this.feedbackMessage = 'Passwords aren\'t match';
+      this.feedbackMessage = 'Passwords don\'t match';
       return;
     }
     this.onEdit = false;
+    console.log(this.user);
     this.userService.updateUserData(this.user).subscribe(result => {
         if (result.payload) {
           this.userService.getUser(+this.id).subscribe(user => {
@@ -101,7 +105,6 @@ export class ProfilePageComponent implements OnInit {
     this.imageService.uploadProfileImage().subscribe(
       result => {
         if (!result.exception) {
-          this.imageIsUpdated = true;
           window.location.reload();
         }
       });
