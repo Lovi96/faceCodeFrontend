@@ -15,7 +15,8 @@ export class NewsFeedComponent implements OnInit {
   posts: NewsFeedPost[];
   userID: number;
 
-  constructor(private newsFeedService: NewsfeedService, private userService: UserService, private router: Router, private guard: MyGuard) {
+  constructor(private newsFeedService: NewsfeedService, private userService: UserService,
+              private router: Router, private guard: MyGuard) {
   }
 
   ngOnInit() {

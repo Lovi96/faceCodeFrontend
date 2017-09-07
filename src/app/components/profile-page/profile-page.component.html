@@ -123,7 +123,7 @@
     <app-profile-page-post [post]="post"></app-profile-page-post>
   </div>
   <br>
-  <div *ngIf="user.id == userService.getLoggedInUserId()" align="center">
+  <div *ngIf="editable" align="center">
     <app-new-user-post></app-new-user-post>
   </div>
   <!--</div>-->
