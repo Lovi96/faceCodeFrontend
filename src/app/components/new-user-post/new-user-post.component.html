@@ -1,9 +1,9 @@
-<div class="containerColor" align="center" style="max-width: 550px;padding: 15px">
-  <p>{{feedbackMessage}}</p>
-  <br>
-  <input class="form-control" [(ngModel)]="post.title" placeholder="Title"/>
-  <br>
-  <textarea class="form-control" [(ngModel)]="post.content" placeholder="Content"></textarea>
-  <br>
-  <button class="btn btn-default" (click)="save()">Save</button>
+<div style="padding: 60px">
+  <div class="w3-card-4 w3-theme" style="max-width: 80%">
+    <h2><input class="w3-input w3-theme-l3" style="resize: none;" [(ngModel)]="post.title" placeholder="Title"/></h2>
+    <br>
+    <textarea class="w3-input w3-theme" [(ngModel)]="post.content" placeholder="Content"></textarea>
+    <br>
+    <button class="w3-button w3-theme-d2" (click)="save()">Save</button>
+  </div>
 </div>

@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {Response} from '@angular/http';
 import {HttpWrapper} from "../services/http-wrapper.service";
 import "rxjs/add/operator/do";
+import {isBoolean} from "util";
 
 
 @Injectable()
@@ -24,12 +25,18 @@ export class MyGuard implements CanActivate {
       return false;
     }
     return this.http.post(environment.baseUrl + '/account/tokencheck', token)
-      .map(response => response.json().status)
-      .do(this.redirectToLogin);
+      .map(response => {
+        const status = response.json().status;
+        if(!status){
+          this.router.navigate(['/login']);
+        }
+        return status;
+      })
+      .do(this.redirectToLogin)
   }
 
   redirectToLogin(status: boolean) {
-    if (!status) {
+    if (!status || status==null) {
       this.router.navigate(['/login']);
     }
   }
