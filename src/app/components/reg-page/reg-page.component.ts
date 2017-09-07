@@ -52,7 +52,7 @@ export class RegPageComponent {
     this.user = new User({
         email: this.email,
         password: this.password,
-        yearOfBirth: this.yearOfBirth,
+        birthDate: this.yearOfBirth,
         gender: this.gender,
         firstName: this.firstName,
         lastName: this.lastName,
