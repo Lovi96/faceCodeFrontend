@@ -15,7 +15,7 @@ export class RegPageComponent {
   email: string = "place@holder.com";
   password: string = "jelszo";
   pwAgain: string = "jelszo";
-  yearOfBirth: number = 1997;
+  birthDate: number = 1997;
   gender: string = "FEMALE";
   firstName: string = "Virág";
   lastName: string = "Kiss";
@@ -52,7 +52,7 @@ export class RegPageComponent {
     this.user = new User({
         email: this.email,
         password: this.password,
-        yearOfBirth: this.yearOfBirth,
+        birthDate: this.birthDate,
         gender: this.gender,
         firstName: this.firstName,
         lastName: this.lastName,
