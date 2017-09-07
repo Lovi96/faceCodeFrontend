@@ -1,4 +1,4 @@
-<ng-container *ngIf="post">
+<div style="padding: 30px" *ngIf="post">
   <div *ngIf="onEdit; else noEdit">
     <div class="w3-card-4 w3-theme-l5" style="max-width: 80%">
       <h2><input class="w3-input w3-theme-l3" style="resize: none;" [(ngModel)]="post.title" placeholder="Title"/></h2>
@@ -57,4 +57,4 @@
 
   <!--<div *ngIf="message">{{message}}</div>-->
   <!--</div>-->
-</ng-container>
+</div>
