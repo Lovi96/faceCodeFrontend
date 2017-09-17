@@ -10,10 +10,12 @@ import {Response} from '@angular/http';
 @Injectable()
 export class ProfilePagePostService {
 
-  postsURL = environment.baseUrl + '/profileposts/posts/';
-  postUpdateURL = environment.baseUrl + '/profileposts/update/';
-  singlePostURL = environment.baseUrl + '/profileposts/';
-  newPostURL = environment.baseUrl + '/profileposts/newpost';
+  private postsURL = environment.baseUrl + '/profileposts/posts/';
+  private postUpdateURL = environment.baseUrl + '/profileposts/update/';
+  private singlePostURL = environment.baseUrl + '/profileposts/';
+  private newPostURL = environment.baseUrl + '/profileposts/newpost';
+  private deletePostURL: string = environment.baseUrl + '/profileposts/delete/';
+
 
   constructor(private http: HttpWrapper) {
   }
@@ -34,5 +36,9 @@ export class ProfilePagePostService {
 
   getPost(postID: number): Observable<ProfilePagePost> {
     return this.http.get(this.singlePostURL + postID).map((response:Response) => response.json());
+  }
+
+  deletePost(postId: number): Observable<any> {
+    return this.http.get(this.deletePostURL + postId.toString());
   }
 }

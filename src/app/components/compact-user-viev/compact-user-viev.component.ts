@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {User} from '../../classes/User';
 import {UserService} from '../../services/user.service';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-compact-user-viev',
@@ -11,6 +12,7 @@ export class CompactUserVievComponent implements OnInit {
 
   @Input() user: User;
   @Input() id: number;
+  imageURL :string = environment.baseUrl+'/media/profileimage';
 
   constructor(private userService: UserService) {
 

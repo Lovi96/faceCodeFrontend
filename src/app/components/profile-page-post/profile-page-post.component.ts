@@ -19,6 +19,7 @@ export class ProfilePagePostComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   edit() {
@@ -40,6 +41,10 @@ export class ProfilePagePostComponent implements OnInit {
   revert() {
     this.onEdit = false;
     this.service.getPost(this.post.id).subscribe(post => this.post);
+  }
+
+  remove() {
+    this.service.deletePost(this.post.id).subscribe(result => this.post = null);
   }
 
 }

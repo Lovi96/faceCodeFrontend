@@ -1,77 +1,63 @@
 <div>
 
   <div style="max-width: 600px; min-width: 175px; margin-bottom:25px" class="containerColor container loginPanel">
-    <div class="container col-xs-6 col-sm-6 col-lg-6 col-md-6" style="text-align:center">
-    <h1>Register</h1>
+    <div style="text-align:center">
+      <h1>Register</h1>
 
-    <div *ngIf="this.feedBackMessage">{{feedBackMessage}}</div>
-    <div *ngIf="this.success">Successful registration!</div>
-    <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
-      <li>
-        <div class="input-group">
-          <input id="email" class="form-control" name="email" type="email" [(ngModel)]="email"
-                 placeholder="Email address*"><span class="input-group-addon">*</span>
-        </div>
-      </li>
-      <li>
-        <div class="input-group">
-          <input id="pw" class="form-control" type="password" [(ngModel)]="password" placeholder="Password*"><span
-          class="input-group-addon">*</span>
-        </div>
-      </li>
-      <li>
-        <div class="input-group">
-          <input id="pwagain" class="form-control" type="password" [(ngModel)]="pwAgain"
-                 placeholder="Password again*"><span class="input-group-addon">*</span>
-        </div>
-      </li>
-      <li>
-        <div class="input-group">
-          <input id="yearofbirth" class="form-control" name="firstName" type="number" [(ngModel)]="yearOfBirth"
-                 placeholder="Year of birth*"><span class="input-group-addon">*</span>
-        </div>
-      </li>
-    </ul>
-    <div class="input-group" style="margin-top: 30px">
-      <p>Choose one of the only 2 existing genders: *</p>
-      <label><input type="radio"  name="gender" value="MALE" [(ngModel)]="gender">Male</label>
-      <label style="margin-bottom: 30px; padding-left: 25px"><input type="radio" name="gender" value="FEMALE"
-                         [(ngModel)]="gender">Female</label>
+      <div *ngIf="this.feedBackMessage">{{feedBackMessage}}</div>
+      <div *ngIf="this.success">Successful registration!</div>
+      <ul style="max-width: 425px;list-style-type:none;margin-right: 25px">
+        <li>
+          <div class="input-group">
+            <input id="email" class="form-control" name="email" type="email" [(ngModel)]="email"
+                   placeholder="Email address*"><span class="input-group-addon">*</span>
+          </div>
+        </li>
+        <li>
+          <div class="input-group">
+            <input id="pw" class="form-control" type="password" [(ngModel)]="password" placeholder="Password*"><span
+            class="input-group-addon">*</span>
+          </div>
+        </li>
+        <li>
+          <div class="input-group">
+            <input id="pwagain" class="form-control" type="password" [(ngModel)]="pwAgain"
+                   placeholder="Password again*"><span class="input-group-addon">*</span>
+          </div>
+        </li>
+        <li>
+          <div class="input-group">
+            <input id="yearofbirth" class="form-control" name="yearOfBirth" type="number" [(ngModel)]="birthDate"
+                   placeholder="Year of birth*"><span class="input-group-addon">*</span>
+          </div>
+        </li>
+      </ul>
+      <div class="input-group" style="margin-top: 30px">
+        <p>Choose one of the only 2 existing genders: *</p>
+        <label><input type="radio" name="gender" value="MALE" [(ngModel)]="gender">Male</label>
+        <label style="margin-bottom: 30px; padding-left: 25px"><input type="radio" name="gender" value="FEMALE"
+                                                                      [(ngModel)]="gender">Female</label>
         <br>
-    </div>
-    <input id="firstName" style="max-width: 350px" class="form-control" name="firstName" [(ngModel)]="firstName"
-           placeholder="First Name">
-    <input id="lastName" style="max-width: 350px" class="form-control" name="lastName" [(ngModel)]="lastName"
-           placeholder="Last Name">
+      </div>
+      <input id="firstName" style="max-width: 350px" class="form-control" name="firstName" [(ngModel)]="firstName"
+             placeholder="First Name">
+      <input id="lastName" style="max-width: 350px" class="form-control" name="lastName" [(ngModel)]="lastName"
+             placeholder="Last Name">
 
-    <input id="address" style="max-width: 350px" class="form-control" name="address" [(ngModel)]="address"
-           placeholder="Address">
-    <input id="city" style="max-width: 350px" class="form-control" name="city" [(ngModel)]="city" placeholder="City">
+      <input id="address" style="max-width: 350px" class="form-control" name="address" [(ngModel)]="address"
+             placeholder="Address">
+      <input id="city" style="max-width: 350px" class="form-control" name="city" [(ngModel)]="city" placeholder="City">
 
-    <input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="phone"
-           placeholder="Phone Number">
+      <input id="phone" style="max-width: 350px" class="form-control" name="phone" [(ngModel)]="phone"
+             placeholder="Phone Number">
 
-    <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
-      <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="send()">Create
+      <p>A csillaggal megjelölt mezők kitöltése közelető!</p>
+      <button type="submit" style="margin-bottom: 25px;margin-top: 20px;" class="btn btn-primary" (click)="send()">
+        Create
         Account
       </button>
-    </div>
-    <p class="container col-md-6 col-lg-6 col-sm-6 col-xs-6" style="margin-top:30px">
-      A Fiók létrehozása gombra kattintva elfogadod a Feltételeinket, és kijelented, hogy elolvastad az
-      <a href="#">Adatkezelési szabályzat</a> szövegét, beleértve a cookie-k használatáról szóló ismertető
-      dokumentumot is.</p>
-    <p>Lehetőséget adunk a megosztásra: ez hozzátartozik küldetésünkhöz, hogy a világot nyitottabbá és a kapcsolatokat
-      gazdagabbá tegyük. Ez a szabályzat ismerteti, hogy milyen adatokat gyűjtünk, valamint hogyan történik azoknak a
-      felhasználása és megosztása. Az Adatvédelmi alapismeretek oldalon további eszközöket és tájékoztatást találsz. </p>
-    <p>Gyűjtjük a tartalmakat és az egyéb információkat, amelyeket megadsz szolgáltatásaink használata során, beleértve
-      azt is, amikor fiókot regisztrálsz, valamit létrehozol vagy megosztasz, illetve másoknak üzenetet küldesz vagy
-      egyéb módon kommunikálsz velük. Ide tartozhatnak az általad elérhetővé tett tartalomban szereplő vagy azzal
-      kapcsolatos információk is, például egy fénykép készítésének helye vagy egy fájl létrehozásának dátuma is.
-      </p>
-    <p style="text-align: center"> A <label style="color:#3b5998;">Face</label><label style="color: #e91000;">Code</label>tól SMS-értesítések
-      érkezhetnek neked, és bármikor lehetőséged van ezek használatát kikapcsolni.</p>
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-      <a style="color:darkred"  routerLink="/login" routerLinkActive="active">Already have an account? Click here to Login!</a>
+      <a style="color:darkred" routerLink="/login" routerLinkActive="active">Already have an account? Click here to
+        Login!</a>
     </div>
   </div>
 </div>

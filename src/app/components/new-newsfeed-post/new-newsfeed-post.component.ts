@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {NewsFeedPost} from "../../classes/NewsfeedPost";
 import {NewsfeedService} from "../../services/newsfeed.service";
+import {Result} from "../../classes/Result";
 
 @Component({
   selector: 'app-new-newsfeed-post',
@@ -9,19 +10,34 @@ import {NewsfeedService} from "../../services/newsfeed.service";
 })
 export class NewNewsfeedPostComponent implements OnInit {
 
-  post: NewsFeedPost = new NewsFeedPost();
+  @Input() post: NewsFeedPost;
   fileInputId = 'newPost';
 
   constructor(private service: NewsfeedService) {
   }
 
   ngOnInit() {
-    this.post.type = 'TEXT';
-    this.post.shareLevel = 'PUBLIC';
+    if (!this.post) {
+      this.post = new NewsFeedPost();
+    }
   }
 
   save(): void {
-    this.service.newPost(this.post, this.fileInputId).subscribe();
+    this.service.newPost(this.post, this.fileInputId).subscribe(result => {
+      window.location.reload();
+    });
   }
 
+  ready(): boolean {
+    return (this.post.type != null && this.post.shareLevel != null);
+  }
+
+  myFunction() {
+    const x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
 }

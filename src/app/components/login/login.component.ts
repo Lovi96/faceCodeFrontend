@@ -6,7 +6,7 @@ import {FCException} from '../../classes/FCException'
 import {Http} from '@angular/http';
 import {Router} from "@angular/router";
 import {MyGuard} from "../../guards/can-active.guard";
-import {environment} from "../../../environments/environment";
+import {GlobalEventsManager} from "../../services/global-events-manager.service";
 
 @Component({
   selector: 'app-login',
@@ -22,26 +22,24 @@ export class LoginComponent implements OnInit {
 
   feedbackMessage: string;
 
-  constructor(private myGuard:MyGuard,private http: Http, private userService: UserService, private router: Router) {
+  constructor(private http: Http, private userService: UserService, private router: Router,
+              private guard: MyGuard, public globalEventsManager: GlobalEventsManager) {
   }
 
   ngOnInit(): void {
-    this.makeNavbarUnvisible();
-    const token = this.myGuard.getToken();
-    if(token != null){
-      this.router.navigate(['/profile']);
-    }
+    this.setRandomWallpaper();
+    this.globalEventsManager.showNavBar(false);
+    // if (this.guard.canActivate()) {
+    //   console.log("beenged");
+    //   this.forwardToNewsfeed();
+    // }
   }
 
-
   logIn() {
+    this.globalEventsManager.showNavBar(false);
     this.loginCredentail = new LoginCredentials(this.email, this.password);
     this.userService.logIn(this.loginCredentail).subscribe(x => {
       console.log(x);
-      // this.makeWelcomeGoAway();
-      // this.makeFooterGoAway();
-      // this.makeBackgroundPlain();
-      // this.makeLoginGoAway();
       if (x.exception) {
         if (x.exception.statusCode) {
           this.feedbackMessage = FCException.get(x.exception.statusCode);
@@ -51,20 +49,19 @@ export class LoginComponent implements OnInit {
         }
       }
       if (x.payload) {
-
         this.setToken(x.payload.token);
         this.setUserId(x.payload.userID);
         this.feedbackMessage = 'Logged in successfully';
+        this.forwardToNewsfeed();
 
-        this.makeNavbarVisible();
-        this.router.navigate(['/profile']);
-        this.makeBackgroundPlain();
       }
     })
   }
 
-  makeNavbarVisible() {
-    document.getElementById("navBar").style.visibility = "visible";
+  forwardToNewsfeed(): void {
+    this.removeWallpaper();
+    this.globalEventsManager.showNavBar(true);
+    this.router.navigate(['/newsfeed']);
   }
 
   setToken(token: number): void {
@@ -75,24 +72,18 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userID', userId.toString());
   }
 
-  makeNavbarUnvisible() {
-    document.getElementById("navBar").style.visibility = "hidden";
+  setRandomWallpaper(): void {
+    var locationArray = window.location.href.split('/');
+    if (locationArray[locationArray.length - 1] === "login") {
+      var bgs = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
+      var randomBg = bgs[Math.floor((Math.random() * bgs.length))];
+      document.body.style.backgroundImage = "url(./assets/" + randomBg + ")";
+    }
   }
 
-  makeBackgroundPlain() {
-    document.getElementById("bodyOfPage").style.backgroundImage = "";
+  removeWallpaper(): void {
+    document.body.style.backgroundImage = '';
   }
 
-  makeWelcomeGoAway() {
-    document.getElementById("goAway").innerHTML = "";
-  }
-
-  makeFooterGoAway() {
-    document.getElementById("footerElement").innerText = "";
-  }
-
-  makeLoginGoAway() {
-    document.getElementById("loginElement").innerHTML = "";
-  }
 
 }
